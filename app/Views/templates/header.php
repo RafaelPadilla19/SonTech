@@ -10,7 +10,7 @@
     <link href="css/style_dashboard.css" rel="stylesheet">
     <link rel="stylesheet" href="bootstrap">
     <link href="css/app.css" rel="stylesheet">
-    
+
 </head>
 
 
@@ -26,26 +26,18 @@
                     <li class="sidebar-header">
                         Paginas
                     </li>
-
-                    <li class="sidebar-item active">
-                        <a class="sidebar-link" href="index.html">
-                            <i class="align-middle" data-feather="sliders"></i> <span
-                                class="align-middle">Dashboard</span>
-                        </a>
-                    </li>
-
+                    <!--silebar item dropdown usuarios-->
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="#">
-                            <i class="align-middle" data-feather="user"></i> <span class="align-middle">Perfil</span>
-                        </a>
-                    </li>
-
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="#">
-                            <i class="align-middle" data-feather="settings"></i> <span
-                                class="align-middle">Opciones</span>
-                        </a>
-                    </li>
+						<a  data-bs-target="#dashboards" data-bs-toggle="collapse" class="sidebar-link dropdown-toggle" aria-expanded="false">
+                        <i class="align-middle" data-feather="sliders"></i> 
+						 <span class="">Productos</span>
+						</a>
+						<ul id="dashboards" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+							<li class="sidebar-item active"><a class="sidebar-link" href="index.html">Caregorias</a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href="dashboard-ecommerce.html">Unidades </a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href="dashboard-crypto.html">Analisis </a></li>
+						</ul>
+					</li>
 
                     <li class="sidebar-item">
                         <a class="sidebar-link" href="#">
@@ -60,11 +52,6 @@
                         </a>
                     </li>
 
-                    -
-
-                    -
-
-                    -
                 </ul>
                 <!--barra lateral-->
             </div>
@@ -76,7 +63,7 @@
                     <i class="hamburger align-self-center"></i>
                 </a>
 
-    
+
                 <div class="navbar-collapse collapse">
                     <ul class="navbar-nav navbar-align">
                         <li class="nav-item dropdown">
@@ -240,6 +227,7 @@
                                 <img src="img/avatars/avatar.jpg" class="avatar img-fluid rounded mr-1"
                                     alt="Charles Hall" /> <span class="text-dark">Nombre de Usuario</span>
                             </a>
+
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a class="dropdown-item" href="#"><i class="align-middle mr-1" data-feather="user"></i>
                                     Perfil</a>

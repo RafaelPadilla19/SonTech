@@ -30,6 +30,7 @@
     </div>
 
     <script src="js/app.js"></script>
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <script>
     document.addEventListener("DOMContentLoaded", function() {
