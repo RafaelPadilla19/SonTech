@@ -7,10 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title>Dashboard</title>
-    <link href="css/style_dashboard.css" rel="stylesheet">
-    <link rel="stylesheet" href="bootstrap">
+    
     <link href="css/app.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    
 </head>
 
 
@@ -18,7 +18,7 @@
     <div class="wrapper">
         <nav id="sidebar" class="sidebar">
             <div class="sidebar-content js-simplebar">
-                <a class="sidebar-brand" href="index.html">
+                <a class="sidebar-brand text-decoration-none" href="index.php">
                     <span class="align-middle">SonTech</span>
                 </a>
                 <!--barra lateral-->
@@ -29,7 +29,7 @@
                     <!--silebar item dropdown usuarios-->
                     <li class="sidebar-item">
 						<a  data-bs-target="#dashboards" data-bs-toggle="collapse" class="sidebar-link dropdown-toggle" aria-expanded="false">
-                        <i class="align-middle" data-feather="sliders"></i> 
+                        <i class="align-middle" data-feather="shopping-bag"></i> 
 						 <span class="">Productos</span>
 						</a>
 						<ul id="dashboards" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
@@ -40,12 +40,12 @@
 					</li>
 
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="#">
+                        <a class="sidebar-link" href="<?php echo base_url();?>/marca">
                             <i class="align-middle" data-feather="credit-card"></i> <span
-                                class="align-middle">Invoice</span>
+                                class="align-middle">Marcas</span>
                         </a>
                     </li>
-
+            
                     <li class="sidebar-item">
                         <a class="sidebar-link" href="#">
                             <i class="align-middle" data-feather="book"></i> <span class="align-middle">Blank</span>
