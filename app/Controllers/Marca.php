@@ -2,7 +2,7 @@
     namespace App\Controllers;
 
     use App\Controllers\BaseController;
-use App\Models\MarcaModel;
+    use App\Models\MarcaModel;
 
 class Marca extends BaseController{
         protected $marcaModel;
