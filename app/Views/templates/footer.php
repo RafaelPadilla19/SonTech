@@ -29,9 +29,10 @@
         </div>
     </div>
 
-    <script src="js/app.js"></script>
-    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
-
+    <script src="<?php echo base_url();?>/js/app.js"></script>
+    <script src="<?php echo base_url();?>/bootstrap/js/bootstrap.bundle.min.js"></script>
+    
+    
     <script>
     document.addEventListener("DOMContentLoaded", function() {
         var ctx = document.getElementById("chartjs-dashboard-line").getContext("2d");
