@@ -2,7 +2,7 @@
     namespace App\Controllers;
 
     use App\Controllers\BaseController;
-    use App\Models\MarcaModel;
+use App\Models\MarcaModel;
 
 class Marca extends BaseController{
         protected $marcaModel;
@@ -12,7 +12,7 @@ class Marca extends BaseController{
         }
 
         public function index($activo=1){
-            $marcaModel= $this->marcaModel->where('estado',$activo)->findAll();
+            $marcaModel= $this->marcaModel->where('estado_id',$activo)->findAll();
 
             $data = [
                 'titulo'=>'Marcas',
