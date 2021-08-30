@@ -12,7 +12,8 @@ class Marca extends BaseController{
         }
 
         public function index($activo=1){
-            $marcaModel= $this->marcaModel->where('estado',$activo)->findAll();
+            //ordenar por id de forma decente
+            $marcaModel= $this->getMarcas($activo);
 
             $data = [
                 'titulo'=>'Marcas',
@@ -23,10 +24,97 @@ class Marca extends BaseController{
             echo view('templates/footer');
         }
 
-        public function getMarca(){
-            $marca = $this->marcaModel->getMarca();
-            echo json_encode($marca);
+        public function eliminados($activo=0){
+            //ordenar por id de forma decente
+            $marcaModel= $this->getMarcas($activo);
+
+            $data = [
+                'titulo'=>'Marcas Eliminadas',
+                'datos'=>$marcaModel
+            ];
+            echo view('templates/header');
+            echo view('forms/marcas/inactivos_view',$data);
+            echo view('templates/footer');
         }
+
+        public function getMarcas($estado){
+            $marcaModel=$this->marcaModel->where('estado',$estado)->orderBy('marcaId','DESC')->findAll();
+            return $marcaModel;
+        }
+
+        public function insertar(){
+            $response=$this->marcaModel->save(['nombreMarca' => $this->request->getPost('nombre')]);
+            if($response){
+                return 'guardado';
+            }else{
+                return 'error';
+            }
+        }
+
+        public function actualizar(){
+            $id= $this->request->getPost('id');
+            $response=$this->marcaModel->update($id,[
+                'nombreMarca' => $this->request->getPost('nombre')
+            ]);
+         
+            if($response){
+                return 'actualizado';
+            }else{
+                return 'error';
+            }
+        }
+
+        public function eliminar($id){
+            $inactivo=0;
+            $response=$this->marcaModel->update($id,[
+                'estado' => $inactivo ]);
+
+
+            if($response){
+                $state= 'eliminado';
+            }else{
+                $state= 'error';
+            }
+
+            $marcaModel= $this->getMarcas(1);
+            $data = [
+                'titulo'=>'Marcas',
+                'datos'=>$marcaModel,
+                'state'=>$state
+            ];
+            echo view('templates/header');
+            echo view('forms/marcas/index_view',$data);
+            echo view('templates/footer');
+
+        }
+        public function restaurar($id){
+            $activo=1;
+            $response=$this->marcaModel->update($id,[
+                'estado' => $activo ]);
+
+            return redirect()->to(base_url('marca'));
+        }
+
+        public function transacion($activo=1){
+            $response='';
+            if($this->request->getPost('id')==null){
+                $response=$this->insertar();
+            }else{
+                $response=$this->actualizar();
+            }
+            $marcaModel=$this->getMarcas($activo);
+
+            $data = [
+                'titulo'=>'Marcas',
+                'datos'=>$marcaModel,
+                'response'=>$response
+            ];
+            echo view('templates/header');
+            echo view('forms/marcas/index_view',$data);
+            echo view('templates/footer');
+
+        }
+
     }
 
 

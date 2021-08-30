@@ -9,7 +9,7 @@ class MarcaModel extends Model{
     protected $returnType = 'array';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['nombreMarca','activo'];
+    protected $allowedFields = ['nombreMarca','estado'];
 
     protected $useTimestamps = true;
     protected $createdField  = 'fecha_alta';
