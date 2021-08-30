@@ -1,6 +1,9 @@
 #-------------------------
 # Operating Specific Junk Files
 #-------------------------
+#mis git ignore
+App/Config/database.php
+
 
 # OS X
 .DS_Store

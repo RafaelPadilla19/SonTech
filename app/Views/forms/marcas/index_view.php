@@ -1,17 +1,53 @@
 <main class="content">
-    <h1 class="m-2 text-capilaze text-muted text-center">
+    <h1 class="m-2 pb-3 text-capilaze text-muted text-center border-bottom">
         <?php echo $titulo;?>
     </h1>
-    <button id="btnNuevo" class="btn btn-success mb-2">Nuevo</button>
-    <div class="table-responsive">
-        <table class="table table-striped table-hover table-bordered">
+    <button id="btnNuevo" class="btn btn-success mb-3 mt-3">Nuevo</button>
+    <a href="<?php echo base_url(); ?>/marca/eliminados" id="btnNuevo" class="btn btn-info mb-3 mt-3">Ver Eliminados</a>
+
+    <!--Buscar-->
+
+    <!--alert se agrego correctamente-->
+    <?php if(isset($response)):?>
+    <?php if($response=='guardado'):?>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <div class="alert alert-success alert-message alert-dismissible fade show" role="alert">
+            <strong>Guardado!</strong> El registro se guardo exitosamente!
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+    <?php endif;?>
+    <?php endif;?>
+
+    <!--alert se actualizo correctamente-->
+    <?php if(isset($response)):?>
+    <?php if($response=='actualizado'):?>
+    <div class="alert alert-success alert-message alert-dismissible fade show" role="alert">
+        <strong>Actualizado!</strong> El registro se actualizo exitosamente !
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <?php endif;?>
+    <?php endif;?>
+
+    <!--alert se elimino correctamente-->
+    <?php if(isset($state)):?>
+    <?php if($state=='eliminado'):?>
+    <div class="alert alert-danger alert-message alert-dismissible fade show" role="alert">
+        <strong>El registro se dio de baja!</strong> El registro se dio de baja exitosamente!
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <?php endif;?>
+    <?php endif;?>
+
+
+    <div class="table-responsive p-2">
+        <table class="table table-striped table-hover table-bordered" id="table-marca">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Marca</th>
                     <th>Fehca creacion</th>
                     <th>Ultima modificacion</th>
-                    <th>Estado</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -22,13 +58,12 @@
                     <td><?php echo $dato['nombreMarca'];?></td>
                     <td><?php echo $dato['fecha_alta'];?></td>
                     <td><?php echo $dato['fecha_edit'];?></td>
-                    <td><?php echo $dato['estado'];?></td>
+                    
                     <td>
-                        <button id="btnEdit" class="btn btn-primary btn-sm" data-bs-toggle="modal"
-                            data-bs-target="#modal_form">
+                        <button id="btnEditar" class="btn btn-primary btn-sm btnEditar" name="btnEditar">
                             <i class="fa fa-edit icon-size"></i>
                         </button>
-                        <a href="#" class="btn btn-danger btn-sm">
+                        <a href="<?php echo base_url().'/marca/eliminar/'.$dato['marcaId'];?>" class="btn btn-danger btn-sm">
                             <i class="fa fa-trash icon-size"></i>
                         </a>
                     </td>
@@ -48,26 +83,27 @@
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                         aria-label="Close"></button>
                 </div>
-                <form id="form-personas" method="post">
+                <form id="form-personas" method="post" action='<?php echo base_url();?>/marca/transacion'>
                     <div class="modal-body m-3">
-
+                        <input type="hidden" name="id" id="id">
                         <div class="mb-3">
-                            <label for="recipient-name"  class="col-form-label">Marca:</label>
-                            <input type="text" id="nombre" class="form-control" id="nombre" />
+                            <label for="recipient-name" class="col-form-label">Marca:</label>
+                            <input type="text" name="nombre" class="form-control" id="nombre" required />
                         </div>
-                        <div class="mb-3">
+
+                        <!-- <div class="mb-3" id="estado-select">
                             <label for="pais-input" class="col-form-label">Estado:</label>
-                            <select id="estado" class="form-select">
+                            <select id="estado" class="form-select" name="estado">
                                 <option value="1">Activo</option>
                                 <option value="2">Inactivo</option>
                             </select>
-                        </div>
+                        </div> -->
 
 
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Guardar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
                     </div>
                 </form>
             </div>
@@ -77,29 +113,45 @@
 </main>
 
 <script>
+    $(document).ready(function() {
+        $('#table-marca').DataTable({
+            "language": {
+                "url": "<?php echo base_url();?>/datatable/DataTables-1.10.25/language/es.json"
+            },
+            "order": [ [0, "desc"] ]
+        });
+    });
+
+
+
 $("#btnNuevo").click(function() {
     $('#form-personas').trigger('reset');
     $("#modal-title").text('Nueva Marca');
     $('.modal-header').css('background-color', '#20a745');
+    //ocultar un div
+   /// $("#estado-select").hide();
     $('#modal_form').modal("show");
 });
 
 
 var fila;
-$("#btnEdit").click(function() {
+$(document).on('click', '.btnEditar', function () {
     //llenar los campos
-    fila=$(this).closest("tr");
+    fila = $(this).closest("tr");
     id = parseInt(fila.find('td:eq(0)').text());
     nombre = fila.find('td:eq(1)').text();
-    estado = fila.find('td:eq(4)').text();
+    //estado = fila.find('td:eq(4)').text();
+    
 
+    $("#id").val(id);
     $("#nombre").val(nombre);
-    $("#estado").val(estado);
-
+    //$("#estado").val(estado);
 
     //$('#form-personas').trigger('reset');
     $("#modal-title").text('Actualizar Marca');
     $('.modal-header').css('background-color', 'blue');
+    //mostrar un div
+   // $("#estado-select").show();
     $('#modal_form').modal("show");
 });
 </script>
