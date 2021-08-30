@@ -31,7 +31,8 @@
 
     <script src="<?php echo base_url();?>/js/app.js"></script>
     <script src="<?php echo base_url();?>/bootstrap/js/bootstrap.bundle.min.js"></script>
-    
+    <script src="<?php echo base_url();?>/datatable/DataTables-1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="<?php echo base_url();?>/datatable/DataTables-1.10.25/js/dataTables.bootstrap5.min.js"></script>
     
     <script>
     document.addEventListener("DOMContentLoaded", function() {

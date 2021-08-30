@@ -1,9 +1,11 @@
 <main class="content">
-    <h1 class="m-2 text-capilaze text-muted text-center">
+    <h1 class="m-2 pb-3 text-capilaze text-muted text-center border-bottom">
         <?php echo $titulo;?>
     </h1>
-    <button id="btnNuevo" class="btn btn-success mb-2">Nuevo</button>
-    <a href="<?php echo base_url(); ?>/marca/eliminados" id="btnNuevo" class="btn btn-info mb-2">Ver Eliminados</a>
+    <button id="btnNuevo" class="btn btn-success mb-3 mt-3">Nuevo</button>
+    <a href="<?php echo base_url(); ?>/marca/eliminados" id="btnNuevo" class="btn btn-info mb-3 mt-3">Ver Eliminados</a>
+
+    <!--Buscar-->
 
     <!--alert se agrego correctamente-->
     <?php if(isset($response)):?>
@@ -38,8 +40,8 @@
     <?php endif;?>
 
 
-    <div class="table-responsive">
-        <table class="table table-striped table-hover table-bordered">
+    <div class="table-responsive p-2">
+        <table class="table table-striped table-hover table-bordered" id="table-marca">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -86,7 +88,7 @@
                         <input type="hidden" name="id" id="id">
                         <div class="mb-3">
                             <label for="recipient-name" class="col-form-label">Marca:</label>
-                            <input type="text" name="nombre" class="form-control" id="nombre" />
+                            <input type="text" name="nombre" class="form-control" id="nombre" required />
                         </div>
 
                         <!-- <div class="mb-3" id="estado-select">
@@ -111,6 +113,17 @@
 </main>
 
 <script>
+    $(document).ready(function() {
+        $('#table-marca').DataTable({
+            "language": {
+                "url": "<?php echo base_url();?>/datatable/DataTables-1.10.25/language/es.json"
+            },
+            "order": [ [0, "desc"] ]
+        });
+    });
+
+
+
 $("#btnNuevo").click(function() {
     $('#form-personas').trigger('reset');
     $("#modal-title").text('Nueva Marca');
