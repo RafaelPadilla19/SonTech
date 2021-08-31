@@ -38,7 +38,7 @@
 						<ul id="dashboards" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
 							<li class="sidebar-item active"><a class="sidebar-link" href="index.html">Caregorias</a></li>
 							<li class="sidebar-item"><a class="sidebar-link" href="dashboard-ecommerce.html">Unidades </a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="dashboard-crypto.html">Analisis </a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href="dashboard-crypto.html">Tipo de productos </a></li>
 						</ul>
 					</li>
 
@@ -46,6 +46,12 @@
                         <a class="sidebar-link" href="<?php echo base_url();?>/marca">
                             <i class="align-middle" data-feather="credit-card"></i> <span
                                 class="align-middle">Marcas</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="<?php echo base_url();?>/departamento">
+                            <i class="align-middle" data-feather="credit-card"></i> <span
+                                class="align-middle">Departamentos</span>
                         </a>
                     </li>
             

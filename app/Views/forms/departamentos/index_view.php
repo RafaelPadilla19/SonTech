@@ -3,7 +3,7 @@
         <?php echo $titulo;?>
     </h1>
     <button id="btnNuevo" class="btn btn-success mb-3 mt-3">Nuevo</button>
-    <a href="<?php echo base_url(); ?>/marca/eliminados" id="btnNuevo" class="btn btn-info mb-3 mt-3">Ver Eliminados</a>
+    <a href="<?php echo base_url(); ?>/departamento/eliminados" id="btnNuevo" class="btn btn-info mb-3 mt-3">Ver Eliminados</a>
 
     <!--Buscar-->
 
@@ -41,12 +41,12 @@
 
 
     <div class="table-responsive p-2">
-        <table class="table table-striped table-hover table-bordered" id="table-marca">
+        <table class="table table-striped table-hover table-bordered" id="table-departamento">
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Marca</th>
-                    <th>Fehca creacion</th>
+                    <th>Departamento</th>
+                    <th>Fecha creacion</th>
                     <th>Ultima modificacion</th>
                     <th>Acciones</th>
                 </tr>
@@ -54,8 +54,8 @@
             <tbody>
                 <?php foreach($datos as $dato){?>
                 <tr>
-                    <td><?php echo $dato['marca_id'];?></td>
-                    <td><?php echo $dato['nombre_marca'];?></td>
+                    <td><?php echo $dato['departamento_id'];?></td>
+                    <td><?php echo $dato['nombre_departamento'];?></td>
                     <td><?php echo $dato['fecha_alta'];?></td>
                     <td><?php echo $dato['fecha_edit'];?></td>
                     
@@ -63,7 +63,7 @@
                         <button id="btnEditar" class="btn btn-primary btn-sm btnEditar" name="btnEditar">
                             <i class="fa fa-edit icon-size"></i>
                         </button>
-                        <a href="<?php echo base_url().'/marca/eliminar/'.$dato['marca_id'];?>" class="btn btn-danger btn-sm">
+                        <a href="<?php echo base_url().'/departamento/eliminar/'.$dato['departamento_id'];?>" class="btn btn-danger btn-sm">
                             <i class="fa fa-trash icon-size"></i>
                         </a>
                     </td>
@@ -83,11 +83,11 @@
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                         aria-label="Close"></button>
                 </div>
-                <form id="form-personas" method="post" action='<?php echo base_url();?>/marca/transacion'>
+                <form id="form-personas" method="post" action='<?php echo base_url();?>/departamento/transacion'>
                     <div class="modal-body m-3">
                         <input type="hidden" name="id" id="id">
                         <div class="mb-3">
-                            <label for="recipient-name" class="col-form-label">Marca:</label>
+                            <label for="recipient-name" class="col-form-label">Departamento:</label>
                             <input type="text" name="nombre" class="form-control" id="nombre" required />
                         </div>
 
@@ -114,7 +114,7 @@
 
 <script>
     $(document).ready(function() {
-        $('#table-marca').DataTable({
+        $('#table-departamento').DataTable({
             "language": {
                 "url": "<?php echo base_url();?>/datatable/DataTables-1.10.25/language/es.json"
             },
@@ -124,7 +124,7 @@
 
 $("#btnNuevo").click(function() {
     $('#form-personas').trigger('reset');
-    $("#modal-title").text('Nueva Marca');
+    $("#modal-title").text('Nuevo Departamento');
     $('.modal-header').css('background-color', '#20a745');
     //ocultar un div
    /// $("#estado-select").hide();
@@ -146,7 +146,7 @@ $(document).on('click', '.btnEditar', function () {
     //$("#estado").val(estado);
 
     //$('#form-personas').trigger('reset');
-    $("#modal-title").text('Actualizar Marca');
+    $("#modal-title").text('Actualizar Departamento');
     $('.modal-header').css('background-color', 'blue');
     //mostrar un div
    // $("#estado-select").show();
