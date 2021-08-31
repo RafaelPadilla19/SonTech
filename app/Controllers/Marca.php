@@ -14,10 +14,15 @@ class Marca extends BaseController{
         public function index($activo=1){
             //ordenar por id de forma decente
             $marcaModel= $this->getMarcas($activo);
-
+            $guardar = session('guardar');
+            $actualizar = session('actualizar');
+            $eliminar = session('eliminar');
             $data = [
                 'titulo'=>'Marcas',
-                'datos'=>$marcaModel
+                'datos'=>$marcaModel,
+                'guardar'=>$guardar,
+                'actualizar'=>$actualizar,
+                'eliminar'=>$eliminar
             ];
             echo view('templates/header');
             echo view('forms/marcas/index_view',$data);
@@ -27,7 +32,7 @@ class Marca extends BaseController{
         public function eliminados($activo=0){
             //ordenar por id de forma decente
             $marcaModel= $this->getMarcas($activo);
-
+            
             $data = [
                 'titulo'=>'Marcas Eliminadas',
                 'datos'=>$marcaModel
@@ -45,9 +50,9 @@ class Marca extends BaseController{
         public function insertar(){
             $response=$this->marcaModel->save(['nombre_marca' => $this->request->getPost('nombre')]);
             if($response){
-                return 'guardado';
+                return redirect()->to(base_url().'/marca')->with('guardar','ok');
             }else{
-                return 'error';
+                return redirect()->to(base_url().'/marca')->with('guardar','error');
             }
         }
 
@@ -57,10 +62,24 @@ class Marca extends BaseController{
                 'nombre_marca' => $this->request->getPost('nombre')
             ]);
          
-            if($response){
-                return 'actualizado';
+            return $response;
+        }
+        
+        public function action(){
+            if($this->request->getPost('id')==null){
+                $response = $this->insertar();
+                if($response){
+                    return redirect()->to(base_url().'/marca')->with('guardar','ok');
+                }else{
+                    return redirect()->to(base_url().'/marca')->with('guardar','error');
+                }
             }else{
-                return 'error';
+                $response = $this->actualizar();
+                if($response){
+                    return redirect()->to(base_url().'/marca')->with('actualizar','ok');
+                }else{
+                    return redirect()->to(base_url().'/marca')->with('actualizar','error');
+                }
             }
         }
 
@@ -71,48 +90,18 @@ class Marca extends BaseController{
 
 
             if($response){
-                $state= 'eliminado';
+                return redirect()->to(base_url().'/marca')->with('eliminar','ok');
             }else{
-                $state= 'error';
+                return redirect()->to(base_url().'/marca')->with('eliminar','error');
             }
-
-            $marcaModel= $this->getMarcas(1);
-            $data = [
-                'titulo'=>'Marcas',
-                'datos'=>$marcaModel,
-                'state'=>$state
-            ];
-            echo view('templates/header');
-            echo view('forms/marcas/index_view',$data);
-            echo view('templates/footer');
-
         }
+
         public function restaurar($id){
             $activo=1;
             $response=$this->marcaModel->update($id,[
                 'estado' => $activo ]);
 
             return redirect()->to(base_url('marca'));
-        }
-
-        public function transacion($activo=1){
-            $response='';
-            if($this->request->getPost('id')==null){
-                $response=$this->insertar();
-            }else{
-                $response=$this->actualizar();
-            }
-            $marcaModel=$this->getMarcas($activo);
-
-            $data = [
-                'titulo'=>'Marcas',
-                'datos'=>$marcaModel,
-                'response'=>$response
-            ];
-            echo view('templates/header');
-            echo view('forms/marcas/index_view',$data);
-            echo view('templates/footer');
-
         }
 
     }
