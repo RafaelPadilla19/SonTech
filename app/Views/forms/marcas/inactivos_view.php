@@ -18,13 +18,13 @@
             <tbody>
                 <?php foreach($datos as $dato){?>
                 <tr>
-                    <td><?php echo $dato['marcaId'];?></td>
-                    <td><?php echo $dato['nombreMarca'];?></td>
+                    <td><?php echo $dato['marca_id'];?></td>
+                    <td><?php echo $dato['nombre_marca'];?></td>
                     <td><?php echo $dato['fecha_alta'];?></td>
                     <td><?php echo $dato['fecha_edit'];?></td>
                     
                     <td>
-                        <a href="<?php echo base_url().'/marca/restaurar/'.$dato['marcaId'];?>" class="btn btn-primary">
+                        <a href="<?php echo base_url().'/marca/restaurar/'.$dato['marca_id'];?>" class="btn btn-primary">
                         <!--icono de carga-->
                         <i class="fa fa-upload icon-alt"></i>
                         </a>

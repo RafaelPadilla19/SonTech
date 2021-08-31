@@ -4,12 +4,12 @@ namespace App\Models;
 use CodeIgniter\Model;
 
 class MarcaModel extends Model{
-    protected $table = 'marca';
-    protected $primaryKey = 'marcaId';
+    protected $table = 'marcas';
+    protected $primaryKey = 'marca_id';
     protected $returnType = 'array';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['nombreMarca','estado'];
+    protected $allowedFields = ['nombre_marca','estado'];
 
     protected $useTimestamps = true;
     protected $createdField  = 'fecha_alta';

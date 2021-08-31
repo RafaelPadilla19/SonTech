@@ -8,21 +8,19 @@
     <!--Buscar-->
 
     <!--alert se agrego correctamente-->
-    <?php if(isset($response)):?>
-    <?php if($response=='guardado'):?>
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <div class="alert alert-success alert-message alert-dismissible fade show" role="alert">
-            <strong>Guardado!</strong> El registro se guardo exitosamente!
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
+    <?php if(isset($guardar)):?>
+    <?php if($guardar=='ok'):?>
+    <div class="alert alert-success alert-message alert-dismissible fade show" role="alert">
+        <strong>Guardado!</strong> El registro se guardo exitosamente !
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     <?php endif;?>
     <?php endif;?>
 
     <!--alert se actualizo correctamente-->
-    <?php if(isset($response)):?>
-    <?php if($response=='actualizado'):?>
-    <div class="alert alert-success alert-message alert-dismissible fade show" role="alert">
+    <?php if(isset($actualizar)):?>
+    <?php if($actualizar=='ok'):?>
+    <div class="alert alert-primary alert-message alert-dismissible fade show" role="alert">
         <strong>Actualizado!</strong> El registro se actualizo exitosamente !
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
@@ -30,8 +28,8 @@
     <?php endif;?>
 
     <!--alert se elimino correctamente-->
-    <?php if(isset($state)):?>
-    <?php if($state=='eliminado'):?>
+    <?php if(isset($eliminar)):?>
+    <?php if($eliminar=='ok'):?>
     <div class="alert alert-danger alert-message alert-dismissible fade show" role="alert">
         <strong>El registro se dio de baja!</strong> El registro se dio de baja exitosamente!
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -54,16 +52,17 @@
             <tbody>
                 <?php foreach($datos as $dato){?>
                 <tr>
-                    <td><?php echo $dato['marcaId'];?></td>
-                    <td><?php echo $dato['nombreMarca'];?></td>
+                    <td><?php echo $dato['marca_id'];?></td>
+                    <td><?php echo $dato['nombre_marca'];?></td>
                     <td><?php echo $dato['fecha_alta'];?></td>
                     <td><?php echo $dato['fecha_edit'];?></td>
-                    
+
                     <td>
                         <button id="btnEditar" class="btn btn-primary btn-sm btnEditar" name="btnEditar">
                             <i class="fa fa-edit icon-size"></i>
                         </button>
-                        <a href="<?php echo base_url().'/marca/eliminar/'.$dato['marcaId'];?>" class="btn btn-danger btn-sm">
+                        <a href="<?php echo base_url().'/marca/eliminar/'.$dato['marca_id'];?>"
+                            class="btn btn-danger btn-sm">
                             <i class="fa fa-trash icon-size"></i>
                         </a>
                     </td>
@@ -83,7 +82,7 @@
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                         aria-label="Close"></button>
                 </div>
-                <form id="form-personas" method="post" action='<?php echo base_url();?>/marca/transacion'>
+                <form id="form-personas" method="post" action='<?php echo base_url();?>/marca/action'>
                     <div class="modal-body m-3">
                         <input type="hidden" name="id" id="id">
                         <div class="mb-3">
@@ -113,14 +112,16 @@
 </main>
 
 <script>
-    $(document).ready(function() {
-        $('#table-marca').DataTable({
-            "language": {
-                "url": "<?php echo base_url();?>/datatable/DataTables-1.10.25/language/es.json"
-            },
-            "order": [ [0, "desc"] ]
-        });
+$(document).ready(function() {
+    $('#table-marca').DataTable({
+        "language": {
+            "url": "<?php echo base_url();?>/datatable/DataTables-1.10.25/language/es.json"
+        },
+        "order": [
+            [0, "desc"]
+        ]
     });
+});
 
 
 
@@ -129,19 +130,19 @@ $("#btnNuevo").click(function() {
     $("#modal-title").text('Nueva Marca');
     $('.modal-header').css('background-color', '#20a745');
     //ocultar un div
-   /// $("#estado-select").hide();
+    /// $("#estado-select").hide();
     $('#modal_form').modal("show");
 });
 
 
 var fila;
-$(document).on('click', '.btnEditar', function () {
+$(document).on('click', '.btnEditar', function() {
     //llenar los campos
     fila = $(this).closest("tr");
     id = parseInt(fila.find('td:eq(0)').text());
     nombre = fila.find('td:eq(1)').text();
     //estado = fila.find('td:eq(4)').text();
-    
+
 
     $("#id").val(id);
     $("#nombre").val(nombre);
@@ -151,7 +152,7 @@ $(document).on('click', '.btnEditar', function () {
     $("#modal-title").text('Actualizar Marca');
     $('.modal-header').css('background-color', 'blue');
     //mostrar un div
-   // $("#estado-select").show();
+    // $("#estado-select").show();
     $('#modal_form').modal("show");
 });
 </script>
