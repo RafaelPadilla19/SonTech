@@ -2,7 +2,7 @@
 # Operating Specific Junk Files
 #-------------------------
 #mis git ignore
-App/Config/database.php
+app/Config/Database.php
 
 
 # OS X
