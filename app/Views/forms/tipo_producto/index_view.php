@@ -90,15 +90,6 @@
                             <input type="text" name="nombre" class="form-control" id="nombre" required />
                         </div>
 
-                        <!-- <div class="mb-3" id="estado-select">
-                            <label for="pais-input" class="col-form-label">Estado:</label>
-                            <select id="estado" class="form-select" name="estado">
-                                <option value="1">Activo</option>
-                                <option value="2">Inactivo</option>
-                            </select>
-                        </div> -->
-
-
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

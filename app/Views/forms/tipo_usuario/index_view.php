@@ -3,7 +3,7 @@
         <?php echo $titulo;?>
     </h1>
     <button id="btnNuevo" class="btn btn-success mb-3 mt-3">Nuevo</button>
-    <a href="<?php echo base_url(); ?>/tipousuario/eliminados" id="btnNuevo" class="btn btn-info mb-3 mt-3">Ver Eliminados</a>
+    <a href="<?php echo base_url(); ?>/TipoUsuario/eliminados" id="btnNuevo" class="btn btn-info mb-3 mt-3">Ver Eliminados</a>
 
     <!--Buscar-->
 
@@ -61,7 +61,7 @@
                         <button id="btnEditar" class="btn btn-primary btn-sm btnEditar" name="btnEditar">
                             <i class="fa fa-edit icon-size"></i>
                         </button>
-                        <a href="<?php echo base_url().'/tipousuario/eliminar/'.$dato['tipousuario_id'];?>"
+                        <a href="<?php echo base_url().'/TipoUsuario/eliminar/'.$dato['tipousuario_id'];?>"
                             class="btn btn-danger btn-sm">
                             <i class="fa fa-trash icon-size"></i>
                         </a>
@@ -82,7 +82,7 @@
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                         aria-label="Close"></button>
                 </div>
-                <form id="form-personas" method="post" action='<?php echo base_url();?>/tipousuario/action'>
+                <form id="form-personas" method="post" action='<?php echo base_url();?>/TipoUsuario/action'>
                     <div class="modal-body m-3">
                         <input type="hidden" name="id" id="id">
                         <div class="mb-3">
