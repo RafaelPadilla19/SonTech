@@ -2,7 +2,7 @@
     <h1 class="m-2 text-capilaze text-muted text-center">
         <?php echo $titulo;?>
     </h1>
-    <a href="<?php echo base_url(); ?>/tipo_producto/" id="btnNuevo" class="btn btn-success mb-2">Nuevos</a>
+    <a href="<?php echo base_url(); ?>/TipoProducto/" id="btnNuevo" class="btn btn-success mb-2">Nuevos</a>
 
     <div class="table-responsive">
         <table class="table table-striped table-hover table-bordered">
@@ -24,7 +24,7 @@
                     <td><?php echo $dato['fecha_edit'];?></td>
                     
                     <td>
-                        <a href="<?php echo base_url().'/tipoproducto/restaurar/'.$dato['tipoproducto_id'];?>" class="btn btn-primary">
+                        <a href="<?php echo base_url().'/TipoProducto/restaurar/'.$dato['tipoproducto_id'];?>" class="btn btn-primary">
                         <!--icono de carga-->
                         <i class="fa fa-upload icon-alt"></i>
                         </a>
