@@ -38,7 +38,7 @@
 						<ul id="dashboards" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
 							<li class="sidebar-item active"><a class="sidebar-link" href="index.html">Caregorias</a></li>
 							<li class="sidebar-item"><a class="sidebar-link" href="dashboard-ecommerce.html">Unidades </a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="dashboard-crypto.html">Tipo de productos </a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href="<?php echo base_url();?>/tipoproducto">Tipos de producto </a></li>
 						</ul>
 					</li>
 
@@ -55,6 +55,16 @@
                         </a>
                     </li>
             
+                    <li class="sidebar-item">
+						<a  data-bs-target="#dashboardss" data-bs-toggle="collapse" class="sidebar-link dropdown-toggle" aria-expanded="false">
+                        <i class="align-middle" data-feather="shopping-bag"></i> 
+						 <span class="">Usuarios</span>
+						</a>
+						<ul id="dashboardss" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+							<li class="sidebar-item"><a class="sidebar-link" href="<?php echo base_url();?>/tipousuario">Tipos de usuario </a></li>
+						</ul>
+					</li>
+
                     <li class="sidebar-item">
                         <a class="sidebar-link" href="#">
                             <i class="align-middle" data-feather="book"></i> <span class="align-middle">Blank</span>
