@@ -38,7 +38,7 @@
 						<ul id="dashboards" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
 							<li class="sidebar-item active"><a class="sidebar-link" href="index.html">Caregorias</a></li>
 							<li class="sidebar-item"><a class="sidebar-link" href="dashboard-ecommerce.html">Unidades </a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="<?php echo base_url();?>/tipoproducto">Tipos de producto </a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href="<?php echo base_url();?>/TipoProducto">Tipos de producto </a></li>
 						</ul>
 					</li>
 
@@ -61,7 +61,7 @@
 						 <span class="">Usuarios</span>
 						</a>
 						<ul id="dashboardss" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-							<li class="sidebar-item"><a class="sidebar-link" href="<?php echo base_url();?>/tipousuario">Tipos de usuario </a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href="<?php echo base_url();?>/TipoUsuario">Tipos de usuario </a></li>
 						</ul>
 					</li>
 

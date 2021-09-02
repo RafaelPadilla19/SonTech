@@ -3,7 +3,7 @@
         <?php echo $titulo;?>
     </h1>
     <button id="btnNuevo" class="btn btn-success mb-3 mt-3">Nuevo</button>
-    <a href="<?php echo base_url(); ?>/tipoproducto/eliminados" id="btnNuevo" class="btn btn-info mb-3 mt-3">Ver Eliminados</a>
+    <a href="<?php echo base_url(); ?>/TipoProducto/eliminados" id="btnNuevo" class="btn btn-info mb-3 mt-3">Ver Eliminados</a>
 
     <!--Buscar-->
 
@@ -61,7 +61,7 @@
                         <button id="btnEditar" class="btn btn-primary btn-sm btnEditar" name="btnEditar">
                             <i class="fa fa-edit icon-size"></i>
                         </button>
-                        <a href="<?php echo base_url().'/tipoproducto/eliminar/'.$dato['tipoproducto_id'];?>"
+                        <a href="<?php echo base_url().'/TipoProducto/eliminar/'.$dato['tipoproducto_id'];?>"
                             class="btn btn-danger btn-sm">
                             <i class="fa fa-trash icon-size"></i>
                         </a>
@@ -82,22 +82,13 @@
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                         aria-label="Close"></button>
                 </div>
-                <form id="form-personas" method="post" action='<?php echo base_url();?>/tipoproducto/action'>
+                <form id="form-personas" method="post" action='<?php echo base_url();?>/TipoProducto/action'>
                     <div class="modal-body m-3">
                         <input type="hidden" name="id" id="id">
                         <div class="mb-3">
                             <label for="recipient-name" class="col-form-label">Tipo de producto:</label>
                             <input type="text" name="nombre" class="form-control" id="nombre" required />
                         </div>
-
-                        <!-- <div class="mb-3" id="estado-select">
-                            <label for="pais-input" class="col-form-label">Estado:</label>
-                            <select id="estado" class="form-select" name="estado">
-                                <option value="1">Activo</option>
-                                <option value="2">Inactivo</option>
-                            </select>
-                        </div> -->
-
 
                     </div>
                     <div class="modal-footer">

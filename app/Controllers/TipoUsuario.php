@@ -50,9 +50,9 @@ class TipoUsuario extends BaseController{
         public function insertar(){
             $response=$this->tipousuarioModel->save(['nombre_tipo_usuario' => $this->request->getPost('nombre')]);
             if($response){
-                return redirect()->to(base_url().'/tipousuario')->with('guardar','ok');
+                return redirect()->to(base_url().'/TipoUsuario')->with('guardar','ok');
             }else{
-                return redirect()->to(base_url().'/tipousuario')->with('guardar','error');
+                return redirect()->to(base_url().'/TipoUsuario')->with('guardar','error');
             }
         }
 
@@ -69,16 +69,16 @@ class TipoUsuario extends BaseController{
             if($this->request->getPost('id')==null){
                 $response = $this->insertar();
                 if($response){
-                    return redirect()->to(base_url().'/tipousuario')->with('guardar','ok');
+                    return redirect()->to(base_url().'/TipoUsuario')->with('guardar','ok');
                 }else{
-                    return redirect()->to(base_url().'/tipousuario')->with('guardar','error');
+                    return redirect()->to(base_url().'/TipoUsuario')->with('guardar','error');
                 }
             }else{
                 $response = $this->actualizar();
                 if($response){
-                    return redirect()->to(base_url().'/tipousuario')->with('actualizar','ok');
+                    return redirect()->to(base_url().'/TipoUsuario')->with('actualizar','ok');
                 }else{
-                    return redirect()->to(base_url().'/tipousuario')->with('actualizar','error');
+                    return redirect()->to(base_url().'/TipoUsuario')->with('actualizar','error');
                 }
             }
         }
@@ -90,9 +90,9 @@ class TipoUsuario extends BaseController{
 
 
             if($response){
-                return redirect()->to(base_url().'/tipousuario')->with('eliminar','ok');
+                return redirect()->to(base_url().'/TipoUsuario')->with('eliminar','ok');
             }else{
-                return redirect()->to(base_url().'/tipousuario')->with('eliminar','error');
+                return redirect()->to(base_url().'/TipoUsuario')->with('eliminar','error');
             }
         }
 
@@ -101,7 +101,7 @@ class TipoUsuario extends BaseController{
             $response=$this->tipousuarioModel->update($id,[
                 'estado' => $activo ]);
 
-            return redirect()->to(base_url('tipousuario'));
+            return redirect()->to(base_url('TipoUsuario'));
         }
 
     }

@@ -50,9 +50,9 @@ class TipoProducto extends BaseController{
         public function insertar(){
             $response=$this->tipoproductoModel->save(['nombre_tipo_producto' => $this->request->getPost('nombre')]);
             if($response){
-                return redirect()->to(base_url().'/tipoproducto')->with('guardar','ok');
+                return redirect()->to(base_url().'/TipoProducto')->with('guardar','ok');
             }else{
-                return redirect()->to(base_url().'/tipoproducto')->with('guardar','error');
+                return redirect()->to(base_url().'/TipoProducto')->with('guardar','error');
             }
         }
 
@@ -69,16 +69,16 @@ class TipoProducto extends BaseController{
             if($this->request->getPost('id')==null){
                 $response = $this->insertar();
                 if($response){
-                    return redirect()->to(base_url().'/tipoproducto')->with('guardar','ok');
+                    return redirect()->to(base_url().'/TipoProducto')->with('guardar','ok');
                 }else{
-                    return redirect()->to(base_url().'/tipoproducto')->with('guardar','error');
+                    return redirect()->to(base_url().'/TipoProducto')->with('guardar','error');
                 }
             }else{
                 $response = $this->actualizar();
                 if($response){
-                    return redirect()->to(base_url().'/tipoproducto')->with('actualizar','ok');
+                    return redirect()->to(base_url().'/TipoProducto')->with('actualizar','ok');
                 }else{
-                    return redirect()->to(base_url().'/tipoproducto')->with('actualizar','error');
+                    return redirect()->to(base_url().'/TipoProducto')->with('actualizar','error');
                 }
             }
         }
@@ -90,9 +90,9 @@ class TipoProducto extends BaseController{
 
 
             if($response){
-                return redirect()->to(base_url().'/tipoproducto')->with('eliminar','ok');
+                return redirect()->to(base_url().'/TipoProducto')->with('eliminar','ok');
             }else{
-                return redirect()->to(base_url().'/tipoproducto')->with('eliminar','error');
+                return redirect()->to(base_url().'/TipoProducto')->with('eliminar','error');
             }
         }
 
@@ -101,7 +101,7 @@ class TipoProducto extends BaseController{
             $response=$this->tipoproductoModel->update($id,[
                 'estado' => $activo ]);
 
-            return redirect()->to(base_url('tipoproducto'));
+            return redirect()->to(base_url('TipoProducto'));
         }
 
     }
