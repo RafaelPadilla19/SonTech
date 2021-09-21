@@ -24,7 +24,7 @@ class Producto extends BaseController{
                 'title' => 'Productos',
                 'datos' => $query,
             ];
-            
+            var_dump($data);
         }
         
 
