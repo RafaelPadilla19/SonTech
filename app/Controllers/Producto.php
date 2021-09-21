@@ -1,4 +1,8 @@
 <?php
+<<<<<<< HEAD
+=======
+
+>>>>>>> 497b7a5dc5c7998025b15cf1b8bf71a3e4db5b10
     namespace App\Controllers;
 
     use App\Controllers\BaseController;
@@ -11,6 +15,7 @@ class Producto extends BaseController{
             $this->productoModel= new ProductoModel();
         }
 
+<<<<<<< HEAD
         public function index(){
             $query = $this->productoModel->select('*');
             $query->join('tipo_producto','tipo_productos.tipoproducto_id=productos.tipoproducto_id');
@@ -30,3 +35,22 @@ class Producto extends BaseController{
 
 
 ?>
+=======
+        public function index($estado=1) {
+            $query = $this->productoModel->select('*');
+            $query->join('tipo_productos','tipo_productos.tipoproducto_id=productos.tipoproducto_id');
+            $query->join('marcas','marcas.marca_id=productos.marca_id');
+            $query->where('productos.estado',$estado);
+            $query = $query->findAll();
+
+           // $query=$this->productoModel->where('estado',$estado)->findAll();
+            $data = [
+                'title' => 'Productos',
+                'datos' => $query,
+            ];
+            
+        }
+        
+
+}
+>>>>>>> 497b7a5dc5c7998025b15cf1b8bf71a3e4db5b10
