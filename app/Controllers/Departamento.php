@@ -14,10 +14,15 @@ class Departamento extends BaseController{
         public function index($activo=1){
             //ordenar por id de forma decente
             $departamentoModel= $this->getDepartamentos($activo);
-
+            $guardar = session('guardar');
+            $actualizar = session('actualizar');
+            $eliminar = session('eliminar');
             $data = [
                 'titulo'=>'Departamentos',
-                'datos'=>$departamentoModel
+                'datos'=>$departamentoModel,
+                'guardar'=>$guardar,
+                'actualizar'=>$actualizar,
+                'eliminar'=>$eliminar
             ];
             echo view('templates/header');
             echo view('forms/departamentos/index_view',$data);
@@ -27,9 +32,9 @@ class Departamento extends BaseController{
         public function eliminados($activo=0){
             //ordenar por id de forma decente
             $departamentoModel= $this->getDepartamentos($activo);
-
+            
             $data = [
-                'titulo'=>'Departamentos eliminados',
+                'titulo'=>'Departamentos Eliminados',
                 'datos'=>$departamentoModel
             ];
             echo view('templates/header');
@@ -45,9 +50,9 @@ class Departamento extends BaseController{
         public function insertar(){
             $response=$this->departamentoModel->save(['nombre_departamento' => $this->request->getPost('nombre')]);
             if($response){
-                return 'guardado';
+                return redirect()->to(base_url().'/departamento')->with('guardar','ok');
             }else{
-                return 'error';
+                return redirect()->to(base_url().'/departamento')->with('guardar','error');
             }
         }
 
@@ -57,10 +62,23 @@ class Departamento extends BaseController{
                 'nombre_departamento' => $this->request->getPost('nombre')
             ]);
          
-            if($response){
-                return 'actualizado';
+            return $response;
+        }
+        public function action(){
+            if($this->request->getPost('id')==null){
+                $response = $this->insertar();
+                if($response){
+                    return redirect()->to(base_url().'/departamento')->with('guardar','ok');
+                }else{
+                    return redirect()->to(base_url().'/departamento')->with('guardar','error');
+                }
             }else{
-                return 'error';
+                $response = $this->actualizar();
+                if($response){
+                    return redirect()->to(base_url().'/departamento')->with('actualizar','ok');
+                }else{
+                    return redirect()->to(base_url().'/departamento')->with('actualizar','error');
+                }
             }
         }
 
@@ -71,21 +89,10 @@ class Departamento extends BaseController{
 
 
             if($response){
-                $state= 'eliminado';
+                return redirect()->to(base_url().'/departamento')->with('eliminar','ok');
             }else{
-                $state= 'error';
+                return redirect()->to(base_url().'/departamento')->with('eliminar','error');
             }
-
-            $departamentoModel= $this->getDepartamentos(1);
-            $data = [
-                'titulo'=>'Departamentos',
-                'datos'=>$departamentoModel,
-                'state'=>$state
-            ];
-            echo view('templates/header');
-            echo view('forms/departamentos/index_view',$data);
-            echo view('templates/footer');
-
         }
         public function restaurar($id){
             $activo=1;
@@ -93,26 +100,6 @@ class Departamento extends BaseController{
                 'estado' => $activo ]);
 
             return redirect()->to(base_url('departamento'));
-        }
-
-        public function transacion($activo=1){
-            $response='';
-            if($this->request->getPost('id')==null){
-                $response=$this->insertar();
-            }else{
-                $response=$this->actualizar();
-            }
-            $departamentoModel=$this->getDepartamentos($activo);
-
-            $data = [
-                'titulo'=>'Departamentos',
-                'datos'=>$departamentoModel,
-                'response'=>$response
-            ];
-            echo view('templates/header');
-            echo view('forms/departamentos/index_view',$data);
-            echo view('templates/footer');
-
         }
 
     }
