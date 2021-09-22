@@ -49,11 +49,7 @@ class Marca extends BaseController{
 
         public function insertar(){
             $response=$this->marcaModel->save(['nombre_marca' => $this->request->getPost('nombre')]);
-            if($response){
-                return redirect()->to(base_url().'/marca')->with('guardar','ok');
-            }else{
-                return redirect()->to(base_url().'/marca')->with('guardar','error');
-            }
+            return $response;
         }
 
         public function actualizar(){
