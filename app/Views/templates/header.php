@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="utf-8">
@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="<?php echo base_url();?>/datatable/DataTables-1.10.25/css/dataTables.bootstrap5.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js" ></script>
     <link rel="stylesheet" href="<?php echo base_url();?>/bootstrap/css/bootstrap.min.css"> 
     <link href="<?php echo base_url();?>/css/app.css" rel="stylesheet">
     <link href="<?php echo base_url();?>/css/style.css" rel="stylesheet">
@@ -36,8 +37,7 @@
 						 <span class="">Productos</span>
 						</a>
 						<ul id="dashboards" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-							<li class="sidebar-item active"><a class="sidebar-link" href="index.html">Caregorias</a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="dashboard-ecommerce.html">Unidades </a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href="<?php echo base_url();?>/Producto">Productos </a></li>
 							<li class="sidebar-item"><a class="sidebar-link" href="<?php echo base_url();?>/TipoProducto">Tipos de producto </a></li>
 						</ul>
 					</li>
