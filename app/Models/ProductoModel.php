@@ -3,7 +3,11 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
+<<<<<<< HEAD
+class TipoProductoModel extends Model{
+=======
 class ProductoModel extends Model{
+>>>>>>> 497b7a5dc5c7998025b15cf1b8bf71a3e4db5b10
     protected $table = 'productos';
     protected $primaryKey = 'producto_id';
     protected $returnType = 'array';

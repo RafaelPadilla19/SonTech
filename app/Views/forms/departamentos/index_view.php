@@ -8,21 +8,19 @@
     <!--Buscar-->
 
     <!--alert se agrego correctamente-->
-    <?php if(isset($response)):?>
-    <?php if($response=='guardado'):?>
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <div class="alert alert-success alert-message alert-dismissible fade show" role="alert">
-            <strong>Guardado!</strong> El registro se guardo exitosamente!
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
+    <?php if(isset($guardar)):?>
+    <?php if($guardar=='ok'):?>
+    <div class="alert alert-success alert-message alert-dismissible fade show" role="alert">
+        <strong>Guardado!</strong> El registro se guardo exitosamente !
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     <?php endif;?>
     <?php endif;?>
 
-    <!--alert se actualizo correctamente-->
-    <?php if(isset($response)):?>
-    <?php if($response=='actualizado'):?>
-    <div class="alert alert-success alert-message alert-dismissible fade show" role="alert">
+     <!--alert se actualizo correctamente-->
+     <?php if(isset($actualizar)):?>
+    <?php if($actualizar=='ok'):?>
+    <div class="alert alert-primary alert-message alert-dismissible fade show" role="alert">
         <strong>Actualizado!</strong> El registro se actualizo exitosamente !
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
@@ -30,15 +28,14 @@
     <?php endif;?>
 
     <!--alert se elimino correctamente-->
-    <?php if(isset($state)):?>
-    <?php if($state=='eliminado'):?>
+    <?php if(isset($eliminar)):?>
+    <?php if($eliminar=='ok'):?>
     <div class="alert alert-danger alert-message alert-dismissible fade show" role="alert">
         <strong>El registro se dio de baja!</strong> El registro se dio de baja exitosamente!
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     <?php endif;?>
     <?php endif;?>
-
 
     <div class="table-responsive p-2">
         <table class="table table-striped table-hover table-bordered" id="table-departamento">
@@ -83,7 +80,7 @@
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                         aria-label="Close"></button>
                 </div>
-                <form id="form-personas" method="post" action='<?php echo base_url();?>/departamento/transacion'>
+                <form id="form-personas" method="post" action='<?php echo base_url();?>/departamento/action'>
                     <div class="modal-body m-3">
                         <input type="hidden" name="id" id="id">
                         <div class="mb-3">
