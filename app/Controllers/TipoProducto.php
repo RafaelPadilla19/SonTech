@@ -25,6 +25,7 @@ class TipoProducto extends BaseController{
                 'eliminar'=>$eliminar
             ];
             echo view('templates/header');
+            echo view('templates/menu');
             echo view('forms/tipo_producto/index_view',$data);
             echo view('templates/footer');
         }
@@ -38,6 +39,7 @@ class TipoProducto extends BaseController{
                 'datos'=>$tipoproductoModel
             ];
             echo view('templates/header');
+            echo view('templates/menu');
             echo view('forms/tipo_producto/inactivos_view',$data);
             echo view('templates/footer');
         }
