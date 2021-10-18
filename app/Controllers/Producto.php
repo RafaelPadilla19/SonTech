@@ -130,10 +130,15 @@ class Producto extends BaseController{
             return redirect()->to(base_url('Producto'));
         }
 
-        public function reporteProducto(){
+        public function reporteProducto($id){
+            $productoModel= $this->productoModel->find($id);
+            $data = [
+                'producto' => $productoModel
+            ];
+
             echo view('templates/header');
-            echo view('forms/productos/reportes/reporte_producto_view');
-            echo view('templates/footer');
+            echo view('forms/productos/reportes/reporte_producto_view',$data);
+            
         }
                 
 

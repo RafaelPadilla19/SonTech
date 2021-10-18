@@ -34,15 +34,6 @@
     <script src="<?php echo base_url();?>/datatable/DataTables-1.10.25/js/jquery.dataTables.min.js"></script>
     <script src="<?php echo base_url();?>/datatable/DataTables-1.10.25/js/dataTables.bootstrap5.min.js"></script>
     
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var ctx = document.getElementById("chartjs-dashboard-line").getContext("2d");
-        var gradient = ctx.createLinearGradient(0, 0, 0, 225);
-        gradient.addColorStop(0, "rgba(215, 227, 244, 1)");
-        gradient.addColorStop(1, "rgba(215, 227, 244, 0)");
-    });
-    // Line chart
-    </script>
 
 </body>
 

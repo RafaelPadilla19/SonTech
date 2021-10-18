@@ -76,7 +76,7 @@
                         <button id="btnEditar" class="btn btn-primary btn-sm btnEditar" name="btnEditar">
                             <i class="fa fa-edit icon-size"></i>
                         </button>
-                        <a href="<?php echo base_url(); ?>/Producto/reporteProducto" class="btn btn-primary btn-sm" name="btnVer">
+                        <a href="<?php echo base_url(); ?>/Producto/reporteProducto/<?php echo $dato["producto_id"]?>" class="btn btn-primary btn-sm" name="btnVer">
                             <i class="fa fa-eye icon-size"></i>
                         </a>
                         <a href="<?php echo base_url().'/Producto/eliminar/'.$dato['producto_id'];?>"
