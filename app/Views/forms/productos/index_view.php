@@ -76,9 +76,9 @@
                         <button id="btnEditar" class="btn btn-primary btn-sm btnEditar" name="btnEditar">
                             <i class="fa fa-edit icon-size"></i>
                         </button>
-                        <button id="btnVer" class="btn btn-primary btn-sm" name="btnVer">
+                        <a href="<?php echo base_url(); ?>/Producto/reporteProducto" class="btn btn-primary btn-sm" name="btnVer">
                             <i class="fa fa-eye icon-size"></i>
-                        </button>
+                        </a>
                         <a href="<?php echo base_url().'/Producto/eliminar/'.$dato['producto_id'];?>"
                             class="btn btn-danger btn-sm">
                             <i class="fa fa-trash icon-size"></i>
@@ -250,7 +250,7 @@ $(document).on('click', '.btnEditar', function() {
     console.log(tipoproducto_id);
 
     $("#id").val(id);
-    
+
     $("#nombre").val(nombre);
     $("#descripcion").val(descripcion);
     $("#costo").val(costo);

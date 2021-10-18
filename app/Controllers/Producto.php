@@ -8,7 +8,7 @@
     
 class Producto extends BaseController{
         protected $productoModel;
-
+        
         public function __construct() {
             $this->productoModel= new ProductoModel();
         }
@@ -23,6 +23,7 @@ class Producto extends BaseController{
             $guardar = session('guardar');
             $actualizar = session('actualizar');
             $eliminar = session('eliminar');
+
 
            // $query=$this->productoModel->where('estado',$estado)->findAll();
             $data = [
@@ -125,6 +126,12 @@ class Producto extends BaseController{
                 'estado' => $activo ]);
 
             return redirect()->to(base_url('Producto'));
+        }
+
+        public function reporteProducto(){
+            echo view('templates/header');
+            echo view('forms/productos/reportes/reporte_producto_view');
+            echo view('templates/footer');
         }
                 
 
