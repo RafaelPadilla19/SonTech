@@ -25,6 +25,7 @@ class TipoUsuario extends BaseController{
                 'eliminar'=>$eliminar
             ];
             echo view('templates/header');
+            echo view('templates/menu');
             echo view('forms/tipo_usuario/index_view',$data);
             echo view('templates/footer');
         }
@@ -38,6 +39,7 @@ class TipoUsuario extends BaseController{
                 'datos'=>$tipousuarioModel
             ];
             echo view('templates/header');
+            echo view('templates/menu');
             echo view('forms/tipo_usuario/inactivos_view',$data);
             echo view('templates/footer');
         }

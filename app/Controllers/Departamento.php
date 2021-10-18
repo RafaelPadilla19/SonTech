@@ -25,6 +25,7 @@ class Departamento extends BaseController{
                 'eliminar'=>$eliminar
             ];
             echo view('templates/header');
+            echo view('templates/menu');
             echo view('forms/departamentos/index_view',$data);
             echo view('templates/footer');
         }
@@ -38,6 +39,7 @@ class Departamento extends BaseController{
                 'datos'=>$departamentoModel
             ];
             echo view('templates/header');
+            echo view('templates/menu');
             echo view('forms/departamentos/inactivos_view',$data);
             echo view('templates/footer');
         }

@@ -36,6 +36,7 @@ class Producto extends BaseController{
                 'eliminar' => $eliminar
             ];
             echo view('templates/header');
+            echo view('templates/menu');
             echo view('forms/productos/index_view',$data);
             echo view('templates/footer');
         }
@@ -49,6 +50,7 @@ class Producto extends BaseController{
                 'datos'=>$productoModel
             ];
             echo view('templates/header');
+            echo view('templates/menu');
             echo view('forms/productos/inactivos_view',$data);
             echo view('templates/footer');
         }

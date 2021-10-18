@@ -1,4 +1,3 @@
-
 <body>
     <div class="wrapper">
         <nav id="sidebar" class="sidebar">
@@ -42,6 +41,7 @@
 						 <span class="">Usuarios</span>
 						</a>
 						<ul id="dashboardss" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                            <li class="sidebar-item"><a class="sidebar-link" href="<?php echo base_url();?>/Usuario">Usuarios</a></li>
 							<li class="sidebar-item"><a class="sidebar-link" href="<?php echo base_url();?>/TipoUsuario">Tipos de usuario </a></li>
 						</ul>
 					</li>

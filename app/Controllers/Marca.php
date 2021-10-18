@@ -25,6 +25,7 @@ class Marca extends BaseController{
                 'eliminar'=>$eliminar
             ];
             echo view('templates/header');
+            echo view('templates/menu');
             echo view('forms/marcas/index_view',$data);
             echo view('templates/footer');
         }
@@ -38,6 +39,7 @@ class Marca extends BaseController{
                 'datos'=>$marcaModel
             ];
             echo view('templates/header');
+            echo view('templates/menu');
             echo view('forms/marcas/inactivos_view',$data);
             echo view('templates/footer');
         }
