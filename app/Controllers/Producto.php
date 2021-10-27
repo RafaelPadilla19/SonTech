@@ -66,7 +66,10 @@ class Producto extends BaseController{
         public function insertar(){
             $nombre="default";
             $file='';
-            if($this->request->getFile('imagen')){
+
+            //validar si viene algun archivo con get file
+
+            if(($this->request->getFile('imagen')!='')){
                 $file = $this->request->getFile('imagen');
                 $nombre=$this->guardarImagen($file);
             }
@@ -175,7 +178,7 @@ class Producto extends BaseController{
             //eliminar imagen que no se llame default
             if($nombre!='default'){
                 unlink('uploads/'.$nombre);
-                $file->move('uploads/',$nombre);
+                $nombre=$this->guardarImagen($file);
             }else{
                 $nombre=$this->guardarImagen($file);
                 

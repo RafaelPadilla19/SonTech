@@ -47,10 +47,15 @@
 					</li>
 
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="#">
-                            <i class="align-middle" data-feather="book"></i> <span class="align-middle">Blank</span>
-                        </a>
-                    </li>
+						<a  data-bs-target="#reportes" data-bs-toggle="collapse" class="sidebar-link dropdown-toggle" aria-expanded="false">
+                        <i class="align-middle" data-feather="book"></i> 
+						 <span class="">Reportes generales</span>
+						</a>
+						<ul id="reportes" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                            <li class="sidebar-item"><a class="sidebar-link" href="<?php echo base_url();?>/Usuario">Producto mas vendido</a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href="<?php echo base_url();?>/TipoUsuario">Ventas semanal</a></li>
+						</ul>
+					</li>
 
                 </ul>
                 <!--barra lateral-->
@@ -155,7 +160,7 @@
                                     <a href="#" class="list-group-item">
                                         <div class="row g-0 align-items-center">
                                             <div class="col-2">
-                                                <img src="img/avatars/avatar-5.jpg"
+                                                <img src="<?php echo base_url(); ?>/public/img/avatars/avatar.jpg"
                                                     class="avatar img-fluid rounded-circle" alt="Vanessa Tucker">
                                             </div>
                                             <div class="col-10 pl-2">
@@ -169,7 +174,7 @@
                                     <a href="#" class="list-group-item">
                                         <div class="row g-0 align-items-center">
                                             <div class="col-2">
-                                                <img src="img/avatars/avatar-2.jpg"
+                                                <img src="<?php echo base_url(); ?>/public/img/avatars/avatar.jpg"
                                                     class="avatar img-fluid rounded-circle" alt="William Harris">
                                             </div>
                                             <div class="col-10 pl-2">
@@ -183,7 +188,7 @@
                                     <a href="#" class="list-group-item">
                                         <div class="row g-0 align-items-center">
                                             <div class="col-2">
-                                                <img src="img/avatars/avatar-4.jpg"
+                                                <img src="<?php echo base_url(); ?>/public/img/avatars/avatar.jpg"
                                                     class="avatar img-fluid rounded-circle" alt="Christina Mason">
                                             </div>
                                             <div class="col-10 pl-2">
@@ -197,7 +202,7 @@
                                     <a href="#" class="list-group-item">
                                         <div class="row g-0 align-items-center">
                                             <div class="col-2">
-                                                <img src="img/avatars/avatar-3.jpg"
+                                                <img src="<?php echo base_url(); ?>/public/img/avatars/avatar.jpg"
                                                     class="avatar img-fluid rounded-circle" alt="Sharon Lessman">
                                             </div>
                                             <div class="col-10 pl-2">

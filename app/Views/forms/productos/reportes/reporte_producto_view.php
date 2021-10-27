@@ -1,4 +1,4 @@
-<main class="content">
+<main class="content bg-white" style="height: 100%;">
     <h1 class="m-2 text-capilaze text-muted text-center">
         Reporte de Productos
     </h1>

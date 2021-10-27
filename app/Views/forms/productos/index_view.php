@@ -40,7 +40,7 @@
 
 
     <div class="table-responsive p-2">
-        <table class="table table-striped table-hover table-bordered text-center" id="table-tipoproducto">
+        <table class="table table-striped table-hover table-bordered text-center" id="producto-tabla">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -78,17 +78,19 @@
                             class="avatar img-fluid rounded mr-1" alt="Charles Hall" />
                     </td>
                     <td>
-                        <button id="btnEditar" class="btn btn-primary btn-sm btnEditar" name="btnEditar">
-                            <i class="fa fa-edit icon-size"></i>
-                        </button>
-                        <a href="<?php echo base_url(); ?>/Producto/reporteProducto/<?php echo $dato["producto_id"]?>"
-                            class="btn btn-primary btn-sm" name="btnVer">
-                            <i class="fa fa-eye icon-size"></i>
-                        </a>
-                        <a href="<?php echo base_url().'/Producto/eliminar/'.$dato['producto_id'];?>"
-                            class="btn btn-danger btn-sm">
-                            <i class="fa fa-trash icon-size"></i>
-                        </a>
+                        <div class="btn-group">
+                            <button id="btnEditar" class="btn btn-primary btn-sm btnEditar" name="btnEditar">
+                                <i class="fa fa-edit icon-size"></i>
+                            </button>
+                            <a href="<?php echo base_url(); ?>/Producto/reporteProducto/<?php echo $dato["producto_id"]?>"
+                                class="btn btn-info btn-sm" name="btnVer">
+                                <i class="fa fa-eye icon-size"></i>
+                            </a>
+                            <a href="<?php echo base_url().'/Producto/eliminar/'.$dato['producto_id'];?>"
+                                class="btn btn-danger btn-sm">
+                                <i class="fa fa-trash icon-size"></i>
+                            </a>
+                        </div>
                     </td>
                 </tr>
                 <?php }?>
@@ -106,7 +108,8 @@
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                         aria-label="Close"></button>
                 </div>
-                <form id="form-personas" method="post" action='<?php echo base_url();?>/Producto/action' enctype='multipart/form-data'>
+                <form id="form-personas" method="post" action='<?php echo base_url();?>/Producto/action'
+                    enctype='multipart/form-data'>
                     <div class="modal-body m-3">
                         <input type="hidden" name="producto_id" id="id">
                         <div class="row mb-3">
@@ -149,7 +152,7 @@
                             <div class="col-4">
                                 <div class="mb-3">
                                     <label for="recipient-name" class="col-form-label">Tipo Producto:</label>
-                                    <select name="tipoproducto_id" id="tipoproducto_id" class="form-control">
+                                    <select name="tipoproducto_id" id="tipoproducto_id" class="form-select">
                                         <option value="">Seleccione</option>
                                         <?php foreach($tipoProductos as $tipoproducto){?>
                                         <option value="<?php echo $tipoproducto['tipoproducto_id'];?>">
@@ -189,6 +192,20 @@
 </main>
 
 <script>
+
+
+$(document).ready(function() {
+    $('#producto-tabla').DataTable({
+        "language": {
+            "url": "<?php echo base_url();?>/public/datatable/DataTables-1.10.25/language/es.json"
+        },
+        "order": [
+            [0, "desc"]
+        ],
+        "bAutoWidth": false,
+    });
+});
+
 var costoInput = document.getElementById('costo');
 var precioInput = document.getElementById('precio');
 var gananciaInput = document.getElementById('ganancia');
@@ -220,16 +237,7 @@ precioInput.oninput = function() {
 
 }
 
-$(document).ready(function() {
-    $('#table-tipoproducto').DataTable({
-        "language": {
-            "url": "<?php echo base_url();?>/public/datatable/DataTables-1.10.25/language/es.json"
-        },
-        "order": [
-            [0, "desc"]
-        ]
-    });
-});
+
 
 $("#btnNuevo").click(function() {
     $('#form-personas').trigger('reset');

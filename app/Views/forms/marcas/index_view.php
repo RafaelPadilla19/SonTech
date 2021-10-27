@@ -39,7 +39,7 @@
 
 
     <div class="table-responsive p-2">
-        <table class="table table-striped table-hover table-bordered" id="table-marca">
+        <table class="table table-striped table-hover table-bordered text-center" id="table-marca">
             <thead>
                 <tr>
                     <th>ID</th>
