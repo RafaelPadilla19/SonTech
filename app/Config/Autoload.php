@@ -17,6 +17,8 @@ use CodeIgniter\Config\AutoloadConfig;
  */
 class Autoload extends AutoloadConfig
 {
+	
+	
 	/**
 	 * -------------------------------------------------------------------
 	 * Namespaces
@@ -81,4 +83,7 @@ class Autoload extends AutoloadConfig
 	 * @var array<int, string>
 	 */
 	public $files = [];
+	
+
+
 }

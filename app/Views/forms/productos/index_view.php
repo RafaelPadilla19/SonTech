@@ -53,9 +53,10 @@
                     <th style="display: none;">Id tipo</th>
                     <th>Tipo</th>
                     <th style="display: none;">Id marca</th>
-                    <th>Marca</th>
+                    <th style="display: none;">Marca</th>
+                    <th>Imagen</th>
 
-                    <th>Acciones</th>
+                    <th>Accion</th>
                 </tr>
             </thead>
             <tbody>
@@ -71,12 +72,17 @@
                     <td style="display: none;"><?php echo $dato['tipoproducto_id'];?></td>
                     <td><?php echo $dato['nombre_tipo_producto'];?></td>
                     <td style="display: none;"><?php echo $dato['marca_id'];?></td>
-                    <td><?php echo $dato['nombre_marca'];?></td>
+                    <td style="display: none;"><?php echo $dato['nombre_marca'];?></td>
+                    <td>
+                        <img src="<?php echo base_url(); ?>/uploads/<?php echo $dato['imagen']?>"
+                            class="avatar img-fluid rounded mr-1" alt="Charles Hall" />
+                    </td>
                     <td>
                         <button id="btnEditar" class="btn btn-primary btn-sm btnEditar" name="btnEditar">
                             <i class="fa fa-edit icon-size"></i>
                         </button>
-                        <a href="<?php echo base_url(); ?>/Producto/reporteProducto/<?php echo $dato["producto_id"]?>" class="btn btn-primary btn-sm" name="btnVer">
+                        <a href="<?php echo base_url(); ?>/Producto/reporteProducto/<?php echo $dato["producto_id"]?>"
+                            class="btn btn-primary btn-sm" name="btnVer">
                             <i class="fa fa-eye icon-size"></i>
                         </a>
                         <a href="<?php echo base_url().'/Producto/eliminar/'.$dato['producto_id'];?>"
@@ -100,7 +106,7 @@
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                         aria-label="Close"></button>
                 </div>
-                <form id="form-personas" method="post" action='<?php echo base_url();?>/Producto/action'>
+                <form id="form-personas" method="post" action='<?php echo base_url();?>/Producto/action' enctype='multipart/form-data'>
                     <div class="modal-body m-3">
                         <input type="hidden" name="producto_id" id="id">
                         <div class="row mb-3">
@@ -117,11 +123,11 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <div class="col-4">
+                            <div class="col-3">
                                 <label for="recipient-name" class="col-form-label">Costo:</label>
                                 <input type="text" name="costo" class="form-control" id="costo" required />
                             </div>
-                            <div class="col-4">
+                            <div class="col-3">
                                 <div class="mb-3">
                                     <label for="recipient-name" class="col-form-label">Precio:</label>
                                     <input type="text" name="precio_unitario" class="form-control" id="precio"
@@ -129,18 +135,18 @@
                                 </div>
 
                             </div>
-                            <div class="col-4">
+                            <div class="col-3">
                                 <label for="recipient-name" class="col-form-label">Ganancia:</label>
                                 <input type="text" name="ganancia" class="form-control" id="ganancia" readonly />
                             </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-2">
+                            <div class="col-3">
                                 <label for="recipient-name" class="col-form-label">Cantidad:</label>
                                 <input type="number" min="0" name="cantidad" class="form-control" id="cantidad"
                                     required />
                             </div>
-                            <div class="col-5">
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-4">
                                 <div class="mb-3">
                                     <label for="recipient-name" class="col-form-label">Tipo Producto:</label>
                                     <select name="tipoproducto_id" id="tipoproducto_id" class="form-control">
@@ -152,10 +158,10 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-5">
+                            <div class="col-4">
                                 <div class="mb-3">
                                     <label for="recipient-name" class="col-form-label">Marca:</label>
-                                    <select name="marca_id" id="marca_id" class="form-control">
+                                    <select name="marca_id" id="marca_id" class="form-select">
                                         <option value="">Seleccione</option>
                                         <?php foreach($marcas as $marca){?>
                                         <option value="<?php echo $marca['marca_id'];?>">
@@ -163,6 +169,10 @@
                                         <?php }?>
                                     </select>
                                 </div>
+                            </div>
+                            <div class="col-4">
+                                <label for="recipient-name" class="col-form-label">Imagen:</label>
+                                <input type="file" name="imagen" class="form-control" id="imagen" readonly />
                             </div>
                         </div>
 
@@ -213,7 +223,7 @@ precioInput.oninput = function() {
 $(document).ready(function() {
     $('#table-tipoproducto').DataTable({
         "language": {
-            "url": "<?php echo base_url();?>/datatable/DataTables-1.10.25/language/es.json"
+            "url": "<?php echo base_url();?>/public/datatable/DataTables-1.10.25/language/es.json"
         },
         "order": [
             [0, "desc"]

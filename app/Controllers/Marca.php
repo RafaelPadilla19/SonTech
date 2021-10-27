@@ -8,7 +8,9 @@ class Marca extends BaseController{
         protected $marcaModel;
 
         public function __construct() {
+            
             $this->marcaModel= new MarcaModel();
+
         }
 
         public function index($activo=1){
@@ -102,6 +104,9 @@ class Marca extends BaseController{
             return redirect()->to(base_url('marca'));
         }
 
+       
+        
+        
     }
 
 

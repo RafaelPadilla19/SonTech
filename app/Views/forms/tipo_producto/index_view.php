@@ -106,7 +106,7 @@
 $(document).ready(function() {
     $('#table-tipoproducto').DataTable({
         "language": {
-            "url": "<?php echo base_url();?>/datatable/DataTables-1.10.25/language/es.json"
+            "url": "<?php echo base_url();?>/public/datatable/DataTables-1.10.25/language/es.json"
         },
         "order": [
             [0, "desc"]

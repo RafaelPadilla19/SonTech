@@ -224,7 +224,7 @@
 
                             <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#"
                                 data-toggle="dropdown">
-                                <img src="<?php echo base_url(); ?>/img/avatars/avatar.jpg" class="avatar img-fluid rounded mr-1"
+                                <img src="<?php echo base_url(); ?>/public/img/avatars/avatar.jpg" class="avatar img-fluid rounded mr-1"
                                     alt="Charles Hall" /> <span class="text-dark">Nombre de Usuario</span>
                             </a>
 

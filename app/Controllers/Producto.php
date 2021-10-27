@@ -64,6 +64,15 @@ class Producto extends BaseController{
             return $query;
         }
         public function insertar(){
+            $nombre="default";
+            $file='';
+            if($this->request->getFile('imagen')){
+                $file = $this->request->getFile('imagen');
+                $nombre=$this->guardarImagen($file);
+            }
+                
+            
+
             $response=$this->productoModel->save([
                 'nombre_producto' => $this->request->getPost('nombre_producto'),
                 'descripcion'=>$this->request->getPost('descripcion'),
@@ -72,11 +81,24 @@ class Producto extends BaseController{
                 'ganancia'=>$this->request->getPost('ganancia'),
                 'cantidad'=>$this->request->getPost('cantidad'),
                 'tipoproducto_id'=>$this->request->getPost('tipoproducto_id'),
-                'marca_id'=>$this->request->getPost('marca_id')
+                'marca_id'=>$this->request->getPost('marca_id'),
+                'imagen'=>$nombre,
             ]);
             return $response;
         }
         public function actualizar(){
+            //inicializar file
+            $file='';
+            $name="";
+            $producto=$this->productoModel->find($this->request->getPost('producto_id'));
+            if($this->request->getFile('imagen')!=''){
+                $file = $this->request->getFile('imagen');
+                $name= $this->actualizarImagen($file,$producto['imagen']);
+            }else{
+                $name=$producto["imagen"];
+            }
+            
+
             $response=$this->productoModel->update($this->request->getPost('producto_id'),[
                 'nombre_producto' => $this->request->getPost('nombre_producto'),
                 'descripcion'=>$this->request->getPost('descripcion'),
@@ -85,7 +107,8 @@ class Producto extends BaseController{
                 'ganancia'=>$this->request->getPost('ganancia'),
                 'cantidad'=>$this->request->getPost('cantidad'),
                 'tipoproducto_id'=>$this->request->getPost('tipoproducto_id'),
-                'marca_id'=>$this->request->getPost('marca_id')
+                'marca_id'=>$this->request->getPost('marca_id'),
+                'imagen'=>$name
             ]);
             return $response;
         }
@@ -139,6 +162,26 @@ class Producto extends BaseController{
             echo view('templates/header');
             echo view('forms/productos/reportes/reporte_producto_view',$data);
             
+        }
+
+        public function guardarImagen($file){
+            $nombre = md5(date('YmdHis'));
+            $file->move('uploads/',$nombre);
+            return $nombre;
+        
+        }
+
+        public function actualizarImagen($file,$nombre){
+            //eliminar imagen que no se llame default
+            if($nombre!='default'){
+                unlink('uploads/'.$nombre);
+                $file->move('uploads/',$nombre);
+            }else{
+                $nombre=$this->guardarImagen($file);
+                
+            }
+            return $nombre;
+           
         }
                 
 

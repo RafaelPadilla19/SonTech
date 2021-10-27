@@ -117,6 +117,10 @@ class Usuario extends BaseController{
 
             return redirect()->to(base_url('Usuario'));
         }
+
+        public function GuardarUsuarioConImagen(){
+            
+        }
                 
 
 }

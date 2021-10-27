@@ -9,7 +9,7 @@ class ProductoModel extends Model{
     protected $returnType = 'array';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['nombre_producto','descripcion','costo','precio_unitario','ganancia','cantidad','tipoproducto_id','marca_id','estado'];
+    protected $allowedFields = ['nombre_producto','descripcion','costo','precio_unitario','ganancia','cantidad','tipoproducto_id','marca_id','estado','imagen'];
 
     protected $useTimestamps = true;
     protected $createdField  = 'fecha_alta';
