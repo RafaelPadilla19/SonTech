@@ -15,7 +15,11 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="<?php echo base_url();?>/public/js/angular.min.js"></script>
     <link rel="stylesheet" href="<?php echo base_url();?>/public/bootstrap/css/bootstrap.min.css"> 
-    <link href="<?php echo base_url();?>/public/css/app.css" rel="stylesheet">
     <link href="<?php echo base_url();?>/public/css/style.css" rel="stylesheet">
+    <link class="js-stylesheet" href="<?php echo base_url();?>/public/css/light.css" rel="stylesheet">
+    <!-- <script src="<?php echo base_url();?>/public/js/settings.js"></script> -->
+    
+
+
 </head>
 

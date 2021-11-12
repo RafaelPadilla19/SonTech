@@ -1,8 +1,8 @@
-<body>
+<body data-theme="default" data-layout="fluid" data-sidebar-position="left" data-sidebar-layout="default">
     <div class="wrapper">
-        <nav id="sidebar" class="sidebar">
+        <nav id="sidebar" class="sidebar js-sidebar">
             <div class="sidebar-content js-simplebar">
-                <a class="sidebar-brand text-decoration-none" href="index.php">
+                <a class="sidebar-brand text-decoration-none" href="home">
                     <span class="align-middle">SonTech</span>
                 </a>
                 <!--barra lateral-->
@@ -11,20 +11,31 @@
                         Paginas
                     </li>
                     <!--silebar item dropdown usuarios-->
-                    <li class="sidebar-item">
-						<a  data-bs-target="#dashboards" data-bs-toggle="collapse" class="sidebar-link dropdown-toggle" aria-expanded="false">
-                        <i class="align-middle" data-feather="shopping-bag"></i> 
-						 <span class="">Productos</span>
-						</a>
-						<ul id="dashboards" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-							<li class="sidebar-item"><a class="sidebar-link" href="<?php echo base_url();?>/Producto">Productos </a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="<?php echo base_url();?>/TipoProducto">Tipos de producto </a></li>
-						</ul>
-					</li>
+                    <li class="sidebar-item active">
+                        <a class="sidebar-link" href="<?php echo base_url();?>/home">
+                            <i class="align-middle" data-feather="home"></i> <span class="align-middle">Inicio</span>
+                        </a>
+                    </li>
+
+
+                    
+                    <li class="sidebar-item ">
+                        <a data-bs-target="#producto" data-bs-toggle="collapse" class="sidebar-link collapsed "
+                            aria-expanded="false">
+                            <i class="align-middle" data-feather="shopping-bag"></i>
+                            <span class="">Productos</span>
+                        </a>
+                        <ul id="producto" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                            <li class="sidebar-item"><a class="sidebar-link"
+                                    href="<?php echo base_url();?>/Producto">Productos </a></li>
+                            <li class="sidebar-item"><a class="sidebar-link"
+                                    href="<?php echo base_url();?>/TipoProducto">Tipos de producto </a></li>
+                        </ul>
+                    </li>
 
                     <li class="sidebar-item">
                         <a class="sidebar-link" href="<?php echo base_url();?>/marca">
-                            <i class="align-middle" data-feather="credit-card"></i> <span
+                            <i class="align-middle" data-feather="tag"></i> <span
                                 class="align-middle">Marcas</span>
                         </a>
                     </li>
@@ -34,28 +45,61 @@
                                 class="align-middle">Departamentos</span>
                         </a>
                     </li>
-            
-                    <li class="sidebar-item">
-						<a  data-bs-target="#dashboardss" data-bs-toggle="collapse" class="sidebar-link dropdown-toggle" aria-expanded="false">
-                        <i class="align-middle" data-feather="shopping-bag"></i> 
-						 <span class="">Usuarios</span>
-						</a>
-						<ul id="dashboardss" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                            <li class="sidebar-item"><a class="sidebar-link" href="<?php echo base_url();?>/Usuario">Usuarios</a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="<?php echo base_url();?>/TipoUsuario">Tipos de usuario </a></li>
-						</ul>
-					</li>
 
                     <li class="sidebar-item">
-						<a  data-bs-target="#reportes" data-bs-toggle="collapse" class="sidebar-link dropdown-toggle" aria-expanded="false">
-                        <i class="align-middle" data-feather="book"></i> 
-						 <span class="">Reportes generales</span>
-						</a>
-						<ul id="reportes" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                            <li class="sidebar-item"><a class="sidebar-link" href="<?php echo base_url();?>/Usuario">Producto mas vendido</a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="<?php echo base_url();?>/TipoUsuario">Ventas semanal</a></li>
-						</ul>
-					</li>
+                        <a data-bs-target="#dashboardss" data-bs-toggle="collapse" class="sidebar-link collapsed"
+                            aria-expanded="false">
+                            <i class="align-middle" data-feather="shopping-bag"></i>
+                            <span class="">Usuarios</span>
+                        </a>
+                        <ul id="dashboardss" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                            <li class="sidebar-item"><a class="sidebar-link"
+                                    href="<?php echo base_url();?>/Usuario">Usuarios</a></li>
+                            <li class="sidebar-item"><a class="sidebar-link"
+                                    href="<?php echo base_url();?>/TipoUsuario">Tipos de usuario </a></li>
+                        </ul>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a data-bs-target="#facturar" data-bs-toggle="collapse" class="sidebar-link collapsed"
+                            aria-expanded="false">
+                            <i class="align-middle" data-feather="shopping-cart"></i>
+                            <span class="">Facturacion</span>
+                        </a>
+                        <ul id="facturar" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                            <li class="sidebar-item"><a class="sidebar-link"
+                                    href="<?php echo base_url();?>/Usuario">Facturar</a></li>
+                            <li class="sidebar-item"><a class="sidebar-link"
+                                    href="<?php echo base_url();?>/TipoUsuario">Buscar factura</a></li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-item">
+                        <a data-bs-target="#ordenes" data-bs-toggle="collapse" class="sidebar-link collapsed"
+                            aria-expanded="false">
+                            <i class="align-middle" data-feather="clipboard"></i>
+                            <span class="">Solitudes de compra</span>
+                        </a>
+                        <ul id="ordenes" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                            <li class="sidebar-item"><a class="sidebar-link"
+                                    href="<?php echo base_url();?>/Usuario">Crear Solicitud de compra</a></li>
+                            <li class="sidebar-item"><a class="sidebar-link"
+                                    href="<?php echo base_url();?>/TipoUsuario">Actas de compra</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a data-bs-target="#reportes" data-bs-toggle="collapse" class="sidebar-link collapsed"
+                            aria-expanded="false">
+                            <i class="align-middle" data-feather="book"></i>
+                            <span class="">Reportes generales</span>
+                        </a>
+                        <ul id="reportes" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                            <li class="sidebar-item"><a class="sidebar-link"
+                                    href="<?php echo base_url();?>/Usuario">Producto mas vendido</a></li>
+                            <li class="sidebar-item"><a class="sidebar-link"
+                                    href="<?php echo base_url();?>/TipoUsuario">Ventas semanal</a></li>
+                        </ul>
+                    </li>
 
                 </ul>
                 <!--barra lateral-->
@@ -64,22 +108,22 @@
 
         <div class="main">
             <nav class="navbar navbar-expand navbar-light navbar-bg">
-                <a class="sidebar-toggle d-flex">
-                    <i class="hamburger align-self-center"></i>
-                </a>
+            <a class="sidebar-toggle js-sidebar-toggle">
+					<i class="hamburger align-self-center"></i>
+				</a>
 
 
                 <div class="navbar-collapse collapse">
                     <ul class="navbar-nav navbar-align">
                         <li class="nav-item dropdown">
-                            <a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-toggle="dropdown">
-                                <div class="position-relative">
-                                    <i class="align-middle" data-feather="bell"></i>
-                                    <span class="indicator">4</span>
-                                </div>
-                            </a>
+                        <a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-bs-toggle="dropdown">
+								<div class="position-relative">
+									<i class="align-middle" data-feather="bell"></i>
+									<span class="indicator">4</span>
+								</div>
+							</a>
                             <!--Notificaciones-->
-                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right py-0"
+                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0"
                                 aria-labelledby="alertsDropdown">
                                 <div class="dropdown-menu-header">
                                     4 New Notifications
@@ -144,12 +188,12 @@
                         </li>
                         <!--Mensajes-->
                         <li class="nav-item dropdown">
-                            <a class="nav-icon dropdown-toggle" href="#" id="messagesDropdown" data-toggle="dropdown">
-                                <div class="position-relative">
-                                    <i class="align-middle" data-feather="message-square"></i>
-                                </div>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right py-0"
+                        <a class="nav-icon dropdown-toggle" href="#" id="messagesDropdown" data-bs-toggle="dropdown">
+								<div class="position-relative">
+									<i class="align-middle" data-feather="message-square"></i>
+								</div>
+							</a>
+                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0"
                                 aria-labelledby="messagesDropdown">
                                 <div class="dropdown-menu-header">
                                     <div class="position-relative">
@@ -204,6 +248,7 @@
                                             <div class="col-2">
                                                 <img src="<?php echo base_url(); ?>/public/img/avatars/avatar.jpg"
                                                     class="avatar img-fluid rounded-circle" alt="Sharon Lessman">
+                                                    
                                             </div>
                                             <div class="col-10 pl-2">
                                                 <div class="text-dark">Sharon Lessman</div>
@@ -221,19 +266,19 @@
                         </li>
                         <!--Mensajes-->
                         <!--Perfil-->
+                     
                         <li class="nav-item dropdown">
                             <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#"
-                                data-toggle="dropdown">
-                                <i class="align-middle" data-feather="settings"></i>
+                                data-bs-toggle="dropdown">
+                                <img src="<?php echo base_url(); ?>/public/img/avatars/avatar.jpg" class="avatar img-fluid rounded" alt="Charles Hall" />
                             </a>
 
                             <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#"
-                                data-toggle="dropdown">
-                                <img src="<?php echo base_url(); ?>/public/img/avatars/avatar.jpg" class="avatar img-fluid rounded mr-1"
-                                    alt="Charles Hall" /> <span class="text-dark">Nombre de Usuario</span>
+                                data-bs-toggle="dropdown">
+                                <img src="<?php echo base_url(); ?>/public/img/avatars/avatar.jpg" class="avatar img-fluid rounded" alt="Charles Hall" />
+                                <span class="text-dark">Nombre de Usuario</span>
                             </a>
-
-                            <div class="dropdown-menu dropdown-menu-right">
+                            <div class="dropdown-menu dropdown-menu-end">
                                 <a class="dropdown-item" href="#"><i class="align-middle mr-1" data-feather="user"></i>
                                     Perfil</a>
                                 <div class="dropdown-divider"></div>

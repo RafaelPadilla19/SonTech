@@ -2,7 +2,7 @@
     namespace App\Controllers;
 
     use App\Controllers\BaseController;
-use App\Models\DepartamentoModel;
+    use App\Models\DepartamentoModel;
 
 class Departamento extends BaseController{
         protected $departamentoModel;
