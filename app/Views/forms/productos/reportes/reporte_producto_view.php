@@ -36,5 +36,12 @@
             </h3>';
         }
     ?>
-    <input class="btn btn-success fs-4 mb-3 mt-3" type=button value=Imprimir onclick="print()">
-
+    <div class="ocultar d-flex justify-content-center my-3">
+        <button id="imprimir" name="imprimir" class="btn btn-success me-3">Imprimir</button>
+    </div>
+<script>
+    //imprimir
+    document.getElementById('imprimir').onclick = function() {
+    window.print();
+    }
+</script>
