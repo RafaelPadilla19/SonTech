@@ -49,6 +49,7 @@
                     <th>Telefono</th>
                     <th>Correo</th>
                     <th style="display: none;">Municipio</th>
+                    <th>Departamto id</th>
                     <th>Departamento</th>
                     <th style="display: none;">Direccion</th>
 
@@ -64,6 +65,7 @@
                     <td><?php echo $dato['numero_telefono'];?></td>
                     <td><?php echo $dato['correo'];?></td>
                     <td style="display: none;"><?php echo $dato['municipio'];?></td>
+                    <td><?php echo $dato['departamento_id'];?></td>
                     <td><?php echo $dato['nombre_departamento'];?></td>
                     <td style="display: none;"><?php echo $dato['direccion'];?></td>
                     <td>
@@ -190,7 +192,7 @@ $(document).on('click', '.btnEditar', function() {
     correo = fila.find('td:eq(4)').text();
     municipio = fila.find('td:eq(5)').text();
     departamento_id = fila.find('td:eq(6)').text();
-    direccion = fila.find('td:eq(7)').text();
+    direccion = fila.find('td:eq(8)').text();
     console.log(departamento_id);
 
     $("#id").val(id);

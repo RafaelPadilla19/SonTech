@@ -45,11 +45,16 @@
                                 class="align-middle">Departamentos</span>
                         </a>
                     </li>
-
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="<?php echo base_url();?>/cliente">
+                            <i class="align-middle" data-feather="user-check"></i> <span
+                                class="align-middle">Clientes</span>
+                        </a>
+                    </li>
                     <li class="sidebar-item">
                         <a data-bs-target="#dashboardss" data-bs-toggle="collapse" class="sidebar-link collapsed"
                             aria-expanded="false">
-                            <i class="align-middle" data-feather="shopping-bag"></i>
+                            <i class="align-middle" data-feather="user"></i>
                             <span class="">Usuarios</span>
                         </a>
                         <ul id="dashboardss" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
@@ -68,12 +73,12 @@
                         </a>
                         <ul id="facturar" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item"><a class="sidebar-link"
-                                    href="<?php echo base_url();?>/Usuario">Facturar</a></li>
+                                    href="<?php echo base_url();?>/FacturaVenta">Facturar</a></li>
                             <li class="sidebar-item"><a class="sidebar-link"
                                     href="<?php echo base_url();?>/TipoUsuario">Buscar factura</a></li>
                         </ul>
                     </li>
-                    <li class="sidebar-item">
+                    <!-- <li class="sidebar-item">
                         <a data-bs-target="#ordenes" data-bs-toggle="collapse" class="sidebar-link collapsed"
                             aria-expanded="false">
                             <i class="align-middle" data-feather="clipboard"></i>
@@ -85,7 +90,7 @@
                             <li class="sidebar-item"><a class="sidebar-link"
                                     href="<?php echo base_url();?>/TipoUsuario">Actas de compra</a></li>
                         </ul>
-                    </li>
+                    </li> -->
 
                     <li class="sidebar-item">
                         <a data-bs-target="#reportes" data-bs-toggle="collapse" class="sidebar-link collapsed"
