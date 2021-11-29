@@ -15,16 +15,6 @@
     <table class="table table-striped table-hover table-bordered text-center fs-4 mb-4">
         <tbody>
             <tr>
-                <th>Nombre</th>
-                <th>Descripción</th>
-                <th>Costo</th>
-                <th>Precio Unitario</th>
-                <th>Ganancia</th>
-                <th>Cantidad</th>
-                <th>Tipo de producto</th>
-                <th>Marca</th>
-            </tr>
-            <tr>
                 <td><?php echo $producto['nombre_producto'];?></td>
                 <td><?php echo $producto['descripcion'];?></td>
                 <td><?php echo $producto['costo'];?></td>
@@ -46,14 +36,5 @@
             </h3>';
         }
     ?>
-    <div class="ocultar d-flex justify-content-center my-3">
-        <button id="imprimir" name="imprimir" class="btn btn-success me-3">Imprimir</button>
-    </div>
-</main>
-    <script>
-    //imprimir
-    document.getElementById('imprimir').onclick = function() {
-        window.print();
-    }
-    </script>
+    <input class="btn btn-success fs-4 mb-3 mt-3" type=button value=Imprimir onclick="print()">
 
