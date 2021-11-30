@@ -10,6 +10,8 @@ class Usuario extends BaseController{
 
         public function __construct() {
             $this->usuarioModel= new UsuarioModel();
+
+            // inicar session ci4
         }
 
         public function index($estado=1) {
@@ -34,6 +36,9 @@ class Usuario extends BaseController{
             echo view('forms/usuarios/index_view',$data);
             echo view('templates/footer');
         }
+
+
+
 
         public function eliminados($activo=0){
             //ordenar por id de forma decente

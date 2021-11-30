@@ -19,6 +19,7 @@ class Filters extends BaseConfig
 		'csrf'     => CSRF::class,
 		'toolbar'  => DebugToolbar::class,
 		'honeypot' => Honeypot::class,
+		'Session'  => \App\Filters\Session::class,
 	];
 
 	/**
@@ -47,7 +48,7 @@ class Filters extends BaseConfig
 	 *
 	 * @var array
 	 */
-	public $methods = [];
+	public $methods = [	];
 
 	/**
 	 * List of filter aliases that should run on any
@@ -58,5 +59,30 @@ class Filters extends BaseConfig
 	 *
 	 * @var array
 	 */
-	public $filters = [];
+	public $filters = [
+		"Session"=>[
+			"before"=>[
+				"/",
+				"/home",
+				"/home/*",
+				"cliente",	
+				"cliente/*",
+				"departamento",
+				"departamento/*",
+				"facturaVenta",
+				"facturaVenta/*",
+				"producto",
+				"producto/*",
+				"marca",
+				"marca/*",
+				"tipoProducto",
+				"tipoProducto/*",
+				"tipoUsuario",
+				"tipoUsuario/*",
+				"usuario",
+				"usuario/*",
+				
+			],
+		]
+	];
 }
