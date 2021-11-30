@@ -49,7 +49,7 @@
                     <th>Telefono</th>
                     <th>Correo</th>
                     <th style="display: none;">Municipio</th>
-                    <th>Departamto id</th>
+                    <th style="display: none;">Departamto id</th>
                     <th>Departamento</th>
                     <th style="display: none;">Direccion</th>
 
@@ -65,14 +65,14 @@
                     <td><?php echo $dato['numero_telefono'];?></td>
                     <td><?php echo $dato['correo'];?></td>
                     <td style="display: none;"><?php echo $dato['municipio'];?></td>
-                    <td><?php echo $dato['departamento_id'];?></td>
+                    <td style="display: none;"><?php echo $dato['departamento_id'];?></td>
                     <td><?php echo $dato['nombre_departamento'];?></td>
                     <td style="display: none;"><?php echo $dato['direccion'];?></td>
                     <td>
                         <button id="btnEditar" class="btn btn-primary btn-sm btnEditar" name="btnEditar">
                             <i class="fa fa-edit icon-size"></i>
                         </button>
-                        <button id="btnVer" class="btn btn-primary btn-sm" name="btnVer">
+                        <button id="btnVer" class="btn btn-primary btn-sm" name="btnVer" style="display: none;">
                             <i class="fa fa-eye icon-size"></i>
                         </button>
                         <a href="<?php echo base_url().'/Cliente/eliminar/'.$dato['cliente_id'];?>"
@@ -100,34 +100,15 @@
                     <div class="modal-body m-3">
                         <input type="hidden" name="cliente_id" id="id">
                         <div class="row mb-3">
-                            <div class="col-6">
+                            <div class="col-4">
                                 <label for="recipient-name" class="col-form-label">Nombre Cliente:</label>
                                 <input type="text" name="nombre_cliente" id="nombre" class="form-control" required />
                             </div>
-                            <div class="col-6">
+                            <div class="col-4">
                                 <label for="recipient-name" class="col-form-label">Apellido Cliente:</label>
                                 <input type="text" name="apellido_cliente" id="apellido" class="form-control" required />
                             </div>
-                            <div class="col-6">
-                                <div class="mb-3">
-                                    <label for="recipient-name" class="col-form-label">Numero Cliente:</label>
-                                    <input type="text" name="numero_telefono" class="form-control" id="telefono"
-                                        required />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-2">
-                                <label for="recipient-name" class="col-form-label">Correo cliente:</label>
-                                <input type="text" min="0" name="correo" class="form-control" id="correo"
-                                    required />
-                            </div>
-                            <div class="col-2">
-                                <label for="recipient-name" class="col-form-label">Municipio:</label>
-                                <input type="text" min="0" name="municipio" class="form-control" id="municipio"
-                                    required />
-                            </div>
-                            <div class="col-5">
+                            <div class="col-3">
                                 <div class="mb-3">
                                     <label for="recipient-name" class="col-form-label">Departamento:</label>
                                     <select name="departamento_id" id="departamento_id" class="form-control">
@@ -139,13 +120,32 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-2">
-                                <label for="recipient-name" class="col-form-label">Direccion cliente:</label>
-                                <input type="textarea" min="0" name="direccion" class="form-control" id="direccion"
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-4">
+                                <div class="mb-3">
+                                    <label for="recipient-name" class="col-form-label">Numero Cliente:</label>
+                                    <input type="text" name="numero_telefono" class="form-control" id="telefono"
+                                        required />
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label for="recipient-name" class="col-form-label">Correo cliente:</label>
+                                <input type="text" min="0" name="correo" class="form-control" id="correo"
+                                    required />
+                            </div>
+                            <div class="col-3">
+                                <label for="recipient-name" class="col-form-label">Municipio:</label>
+                                <input type="text" min="0" name="municipio" class="form-control" id="municipio"
                                     required />
                             </div>
                         </div>
-
+                        <div class="row mb-3">
+                            <div class="col-6">
+                                <label for="recipient-name" class="col-form-label">Direccion cliente:</label>
+                                <textarea class="form-control" placeholder="Ingrese la direccion del cliente" name="direccion" id="direccion" required></textarea>
+                            </div>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

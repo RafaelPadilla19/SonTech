@@ -157,13 +157,18 @@ class Producto extends BaseController{
         }
 
         public function reporteProducto($id){
-            $productoModel= $this->productoModel->find($id);
+            $query = $this->productoModel->select('*');
+            $query->join('tipo_productos','tipo_productos.tipoproducto_id=productos.tipoproducto_id');
+            $query->join('marcas','marcas.marca_id=productos.marca_id');
+            $query->where('productos.producto_id',$id);
+            $query = $query->find($id);
             $data = [
-                'producto' => $productoModel
+                'producto' => $query
             ];
 
             echo view('templates/header');
             echo view('forms/productos/reportes/reporte_producto_view',$data);
+            echo view('templates/footer');
             
         }
 
