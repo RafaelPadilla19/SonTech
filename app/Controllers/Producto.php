@@ -61,8 +61,15 @@ class Producto extends BaseController{
             $query->join('marcas','marcas.marca_id=productos.marca_id');
             $query->where('productos.estado',$estado);
             $query = $query->findAll();
+
             return $query;
         }
+
+        public function getProductosJson(){
+            $productoModel= $this->getProductos(1);
+            echo json_encode($productoModel);
+        }
+
         public function insertar(){
             $nombre="default";
             $file='';
@@ -168,7 +175,6 @@ class Producto extends BaseController{
 
             echo view('templates/header');
             echo view('forms/productos/reportes/reporte_producto_view',$data);
-            echo view('templates/footer');
             
         }
 
@@ -190,6 +196,13 @@ class Producto extends BaseController{
             }
             return $nombre;
            
+        }
+
+        public function getNumeroDeStockDeProducto($id){
+            $query = $this->productoModel->select('*');
+            $query->where('productos.producto_id',$id);
+            $query = $query->find($id);
+            return $query['cantidad'];
         }
                 
 
