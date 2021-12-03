@@ -281,7 +281,7 @@
                             <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#"
                                 data-bs-toggle="dropdown">
                                 <img src="<?php echo base_url(); ?>/public/img/avatars/avatar.jpg" class="avatar img-fluid rounded" alt="Charles Hall" />
-                                <span class="text-dark">Nombre de Usuario</span>
+                                <span class="text-dark"><?php echo $_SESSION['usuario']['apellido_usuario'] ?></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a class="dropdown-item" href="#"><i class="align-middle mr-1" data-feather="user"></i>
@@ -292,7 +292,7 @@
                                 <a class="dropdown-item" href="#"><i class="align-middle mr-1"
                                         data-feather="help-circle"></i> Ayuda</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Cerrar Sesion</a>
+                                <a class="dropdown-item" href="<?php echo base_url(); ?>/Login/logout">Cerrar Sesion</a>
                             </div>
                         </li>
                         <!--Perfil-->
