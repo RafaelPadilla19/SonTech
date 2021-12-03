@@ -13,6 +13,18 @@
     <h2 class="mb-4 text-center">El siguiente reporte muestra los detalles de <span class="text-muted fw-bold"><?php echo $producto['nombre_producto'];?></span> el cual cuanta con <span class="text-muted fw-bold"><?php echo $producto['cantidad'];?></span> existencias y con las siguiente informacion</h2>
 
     <table class="table table-striped table-hover table-bordered text-center fs-4 mb-4">
+        <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Costo</th>
+                <th scope="col">Precio Unitario</th>
+                <th scope="col">Ganancia</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Tipo de producto</th>
+                <th scope="col">Marca</th>
+            </tr>
+        </thead>
         <tbody>
             <tr>
                 <td><?php echo $producto['nombre_producto'];?></td>
