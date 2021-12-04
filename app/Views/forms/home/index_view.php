@@ -1,4 +1,4 @@
-<main class="content">
+<main class="content" ng-app="app" ng-controller="app-controller">
     <h2 class="text-capilaze text-muted">
         Bienvenido a la página de inicio
     </h2>
@@ -175,135 +175,139 @@
     </div>
 </main>
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-    var ctx = document.getElementById("chartjs-dashboard-line").getContext("2d");
-    var gradientLight = ctx.createLinearGradient(0, 0, 0, 225);
-    gradientLight.addColorStop(0, "rgba(215, 227, 244, 1)");
-    gradientLight.addColorStop(1, "rgba(215, 227, 244, 0)");
-    var gradientDark = ctx.createLinearGradient(0, 0, 0, 225);
-    gradientDark.addColorStop(0, "rgba(51, 66, 84, 1)");
-    gradientDark.addColorStop(1, "rgba(51, 66, 84, 0)");
-    // Line chart
-    new Chart(document.getElementById("chartjs-dashboard-line"), {
-        type: "line",
-        data: {
-            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov",
-                "Dec"
-            ],
-            datasets: [{
-                label: "Sales ($)",
-                fill: true,
-                backgroundColor: window.theme.id === "light" ? gradientLight : gradientDark,
-                borderColor: window.theme.primary,
-                data: [
-                    2115,
-                    1562,
-                    1584,
-                    1892,
-                    1587,
-                    1923,
-                    2566,
-                    2448,
-                    2805,
-                    3438,
-                    2917,
-                    3327
-                ]
-            }]
-        },
-        options: {
-            maintainAspectRatio: false,
-            legend: {
-                display: false
+angular.module("app", []).controller("app-controller", function($scope, $http, $compile) {
+
+    
+        var ctx = document.getElementById("chartjs-dashboard-line").getContext("2d");
+        var gradientLight = ctx.createLinearGradient(0, 0, 0, 225);
+        gradientLight.addColorStop(0, "rgba(215, 227, 244, 1)");
+        gradientLight.addColorStop(1, "rgba(215, 227, 244, 0)");
+        var gradientDark = ctx.createLinearGradient(0, 0, 0, 225);
+        gradientDark.addColorStop(0, "rgba(51, 66, 84, 1)");
+        gradientDark.addColorStop(1, "rgba(51, 66, 84, 0)");
+        // Line chart
+        new Chart(document.getElementById("chartjs-dashboard-line"), {
+            type: "line",
+            data: {
+                labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct",
+                    "Nov",
+                    "Dec"
+                ],
+                datasets: [{
+                    label: "Sales ($)",
+                    fill: true,
+                    backgroundColor: window.theme.id === "light" ? gradientLight :
+                        gradientDark,
+                    borderColor: window.theme.primary,
+                    data: [
+                        2115,
+                        1562,
+                        1584,
+                        1892,
+                        1587,
+                        1923,
+                        2566,
+                        2448,
+                        2805,
+                        3438,
+                        2917,
+                        3327
+                    ]
+                }]
             },
-            tooltips: {
-                intersect: false
+            options: {
+                maintainAspectRatio: false,
+                legend: {
+                    display: false
+                },
+                tooltips: {
+                    intersect: false
+                },
+                hover: {
+                    intersect: true
+                },
+                plugins: {
+                    filler: {
+                        propagate: false
+                    }
+                },
+                scales: {
+                    xAxes: [{
+                        reverse: true,
+                        gridLines: {
+                            color: "rgba(0,0,0,0.0)"
+                        }
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            stepSize: 1000
+                        },
+                        display: true,
+                        borderDash: [3, 3],
+                        gridLines: {
+                            color: "rgba(0,0,0,0.0)",
+                            fontColor: "#fff"
+                        }
+                    }]
+                }
+            }
+        });
+    
+
+    
+        var markers = [{
+                coords: [37.77, -122.41],
+                name: "San Francisco: 375"
             },
-            hover: {
-                intersect: true
+            {
+                coords: [40.71, -74.00],
+                name: "New York: 350"
             },
-            plugins: {
-                filler: {
-                    propagate: false
+            {
+                coords: [39.09, -94.57],
+                name: "Kansas City: 250"
+            },
+            {
+                coords: [36.16, -115.13],
+                name: "Las Vegas: 275"
+            },
+            {
+                coords: [32.77, -96.79],
+                name: "Dallas: 225"
+            }
+        ];
+        var map = new jsVectorMap({
+            map: "us_aea_en",
+            selector: "#usa_map",
+            zoomButtons: true,
+            markers: markers,
+            markerStyle: {
+                initial: {
+                    r: 9,
+                    stroke: window.theme.white,
+                    strokeWidth: 7,
+                    stokeOpacity: .4,
+                    fill: window.theme.primary
+                },
+                hover: {
+                    fill: window.theme.primary,
+                    stroke: window.theme.primary
                 }
             },
-            scales: {
-                xAxes: [{
-                    reverse: true,
-                    gridLines: {
-                        color: "rgba(0,0,0,0.0)"
-                    }
-                }],
-                yAxes: [{
-                    ticks: {
-                        stepSize: 1000
-                    },
-                    display: true,
-                    borderDash: [3, 3],
-                    gridLines: {
-                        color: "rgba(0,0,0,0.0)",
-                        fontColor: "#fff"
-                    }
-                }]
-            }
-        }
-    });
-});
-</script>
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    var markers = [{
-            coords: [37.77, -122.41],
-            name: "San Francisco: 375"
-        },
-        {
-            coords: [40.71, -74.00],
-            name: "New York: 350"
-        },
-        {
-            coords: [39.09, -94.57],
-            name: "Kansas City: 250"
-        },
-        {
-            coords: [36.16, -115.13],
-            name: "Las Vegas: 275"
-        },
-        {
-            coords: [32.77, -96.79],
-            name: "Dallas: 225"
-        }
-    ];
-    var map = new jsVectorMap({
-        map: "us_aea_en",
-        selector: "#usa_map",
-        zoomButtons: true,
-        markers: markers,
-        markerStyle: {
-            initial: {
-                r: 9,
-                stroke: window.theme.white,
-                strokeWidth: 7,
-                stokeOpacity: .4,
-                fill: window.theme.primary
+            regionStyle: {
+                initial: {
+                    fill: window.theme["gray-200"]
+                }
             },
-            hover: {
-                fill: window.theme.primary,
-                stroke: window.theme.primary
-            }
-        },
-        regionStyle: {
-            initial: {
-                fill: window.theme["gray-200"]
-            }
-        },
-        zoomOnScroll: false
-    });
-    window.addEventListener("resize", () => {
-        map.updateSize();
-    });
-    setTimeout(function() {
-        map.updateSize();
-    }, 250);
+            zoomOnScroll: false
+        });
+        window.addEventListener("resize", () => {
+            map.updateSize();
+        });
+        setTimeout(function() {
+            map.updateSize();
+        }, 250);
+    
+
 });
 </script>

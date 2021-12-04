@@ -75,7 +75,7 @@
                             <li class="sidebar-item"><a class="sidebar-link"
                                     href="<?php echo base_url();?>/FacturaVenta">Facturar</a></li>
                             <li class="sidebar-item"><a class="sidebar-link"
-                                    href="<?php echo base_url();?>/TipoUsuario">Buscar factura</a></li>
+                                    href="<?php echo base_url();?>/FacturaVenta/buscarFactura">Buscar factura</a></li>
                         </ul>
                     </li>
                     <!-- <li class="sidebar-item">
@@ -100,7 +100,7 @@
                         </a>
                         <ul id="reportes" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item"><a class="sidebar-link"
-                                    href="<?php echo base_url();?>/Usuario">Producto mas vendido</a></li>
+                                    href="<?php echo base_url();?>/Reportes/inventario" target="_blank">Inventario</a></li>
                             <li class="sidebar-item"><a class="sidebar-link"
                                     href="<?php echo base_url();?>/TipoUsuario">Ventas semanal</a></li>
                         </ul>

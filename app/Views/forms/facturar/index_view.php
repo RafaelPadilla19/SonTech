@@ -31,17 +31,17 @@
                 <div class="row mb-4">
                     <div class="mb-3 col-4">
                         <label for="recipient-name" class="col-form-label">Subtotal:</label>
-                        <input type="number" class="form-control" id="cifra-presupuestada"
+                        <input type="text" class="form-control" id="cifra-presupuestada"
                             ng-model="factura_venta.subtotal" readonly>
                     </div>
                     <div class="mb-3 col-4">
                         <label for="recipient-name" class="col-form-label">IVA:</label>
-                        <input type="number" class="form-control" id="cifra-presupuestada" ng-model="factura_venta.iva"
+                        <input type="text" class="form-control" id="cifra-presupuestada" ng-model="factura_venta.IVA"
                             readonly>
                     </div>
                     <div class="mb-3 col-4">
                         <label for="recipient-name" class="col-form-label">Total:</label>
-                        <input type="number" class="form-control" id="cifra-presupuestada"
+                        <input type="text" class="form-control" id="cifra-presupuestada"
                             ng-model="factura_venta.total" readonly>
                     </div>
                 </div>
@@ -172,6 +172,7 @@ angular.module("app", []).controller("app-controller", function($scope, $http, $
     $scope.productos = [];
     $scope.productosVenta = [];
     $scope.detallefactura_ventas = [];
+    $scope.detallefactura_venta = {};
     $scope.producto = {};
     $scope.producto.cantidad = 1;
     $scope.producto.total = 0;
@@ -207,8 +208,8 @@ angular.module("app", []).controller("app-controller", function($scope, $http, $
             //$scope.producto.total = productoRes.precio;
             console.log(productoSelect);
             $scope.producto.precio = parseFloat(productoSelect.precio_unitario);
-            $scope.producto.total = parseFloat(productoSelect.precio_unitario) * parseFloat($scope.producto.cantidad
-            );
+            $scope.producto.total = (parseFloat(productoSelect.precio_unitario) * parseFloat($scope.producto.cantidad).toFixed(2));
+            
             $scope.producto.nombre_producto = productoSelect.nombre_producto;
 
         }else{
@@ -249,8 +250,8 @@ angular.module("app", []).controller("app-controller", function($scope, $http, $
                 return total+parseFloat(producto.precio_total);
             },0);
 
-            $scope.factura_venta.iva= $scope.factura_venta.subtotal*0.13;
-            $scope.factura_venta.total= $scope.factura_venta.subtotal+$scope.factura_venta.iva;
+            $scope.factura_venta.IVA= ($scope.factura_venta.subtotal*0.13).toFixed(2);
+            $scope.factura_venta.total= ( parseFloat($scope.factura_venta.subtotal)+ parseFloat($scope.factura_venta.IVA)).toFixed(2);
             $scope.producto={};
             $scope.producto.cantidad=1;
             $scope.producto.total=0;
@@ -262,8 +263,8 @@ angular.module("app", []).controller("app-controller", function($scope, $http, $
             $scope.factura_venta.subtotal= $scope.detallefactura_ventas.reduce((total,producto)=>{
                 return total+parseFloat(producto.precio_total);
             },0);
-            $scope.factura_venta.iva= $scope.factura_venta.subtotal*0.13;
-            $scope.factura_venta.total= $scope.factura_venta.subtotal+$scope.factura_venta.iva;
+            $scope.factura_venta.IVA= ($scope.factura_venta.subtotal*0.13).toFixed(2);
+            $scope.factura_venta.total= ( parseFloat($scope.factura_venta.subtotal)+ parseFloat($scope.factura_venta.IVA)).toFixed(2);
             
 
             console.log($scope.detallefactura_ventas);
@@ -273,6 +274,37 @@ angular.module("app", []).controller("app-controller", function($scope, $http, $
         $scope.facturar=function(){
             console.log($scope.factura_venta);
             console.log($scope.detallefactura_ventas);
+
+            $http({
+                method: "POST",
+                url: "<?php echo base_url(); ?>/FacturaVenta/insertFactura",
+                data: $scope.factura_venta,
+                headers: {
+                    "X-Requested-With": "XMLHttpRequest"
+                }
+            }).then(function mySuccess(response) {
+
+                console.log(response.data);
+
+                for(let i=0; i<$scope.detallefactura_ventas.length;i++){
+                    $scope.detallefactura_ventas[i].facturaventa_id=response.data;
+                    $http({
+                        method: "POST",
+                        url: "<?php echo base_url(); ?>/DetalleFacturaVenta/insertDetalleFactura",
+                        data: $scope.detallefactura_ventas[i],
+                        headers: {
+                            "X-Requested-With": "XMLHttpRequest"
+                        }
+                    });
+                }
+
+            }).then(()=>{
+                alert('Factura registrada correctamente');
+                
+                window.open('<?php echo base_url(); ?>/FacturaVenta/imprimirFactura/'+$scope.factura_venta.facturaventa_id);
+                location.href="<?php echo base_url(); ?>/FacturaVenta/index";
+            });
+
         }
 
 });
