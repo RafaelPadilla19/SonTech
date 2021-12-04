@@ -37,7 +37,7 @@ class Login extends BaseController{
                 return redirect()->to(base_url('/'));
             }else{
                 
-                return redirect()->to(base_url('/usuario/login'))->with('error','error');
+                return redirect()->to(base_url('/login'))->with('error','error');
             }
         }
 
