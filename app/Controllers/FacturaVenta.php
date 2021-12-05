@@ -64,9 +64,7 @@ class FacturaVenta extends BaseController{
                 'detalles'=>$detalles,
             ];
             echo view('templates/header');
-            echo view('templates/menu');
             echo view('forms/facturar/factura_view',$data);
-            echo view('templates/footer');
         }
         
 
