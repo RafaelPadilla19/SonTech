@@ -21,7 +21,11 @@ class Reportes extends BaseController{
         }
 
         public function inventario(){
+            //$this->load->model('ProductoModel');
+		    //$productos= $this->ProductoModel->getProductos($id);
+
             $data = [
+                //'id'=>$id,
                 'title' => 'Reportes',
                 'productos' => $this->producto->getProductos(1),
             ];

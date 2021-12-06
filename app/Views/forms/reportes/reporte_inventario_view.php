@@ -1,5 +1,6 @@
 <?php
     //var_dump($productos);
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -19,31 +20,37 @@
         <table class="table table-sm table-bordered border-primary text-center" style="font-size:12px;">
                 <thead class="table-secondary border-primary">
                     <tr class="align-middle">
-                        <th class="col-1">Id</th>
-                        <th class="col-2">Nombre</th>
-                        <th class="col-2">Descripcion</th>
-                        <th class="col-1">Costo</th>
-                        <th class="col-1">Precio Unitario</th>
-                        <th class="col-1">Ganancia</th>
-                        <th class="col-1">Cantidad</th>
-                        <th class="col-1">Tipo</th>
-                        <th class="col-1">Marca</th>
-                        <th class="col-1">Estado</th>
+                        <th>ID</th>
+                        <th>Producto</th>
+                        <th>Descripcion</th>
+                        <th style="display: none;">Costo</th>
+                        <th>Precio</th>
+                        <th style="display: none;">Ganancia</th>
+                        <th>Stock</th>
+                        <th style="display: none;">Id tipo</th>
+                        <th>Tipo</th>
+                        <th style="display: none;">Id marca</th>
+                        <th style="display: none;">Marca</th>
+                        <th>Estado</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Samsung A201</td>
-                        <td>Telefono de ultima generacion</td>
-                        <td>150.00</td>
-                        <td>200.00</td>
-                        <td>50.00</td>
-                        <td>10</td>
-                        <td>Smartphone</td>
-                        <td>Samsung</td>
-                        <td>Activo</td>
-                    </tr>
+                    <?php foreach($productos as $dato){?>
+                        <tr>
+                            <td><?php echo $dato['producto_id'];?></td>
+                            <td><?php echo $dato['nombre_producto'];?></td>
+                            <td><?php echo $dato['descripcion'];?></td>
+                            <td style="display: none;"><?php echo $dato['costo'];?></td>
+                            <td><?php echo $dato['precio_unitario'];?></td>
+                            <td style="display: none;"><?php echo $dato['ganancia'];?></td>
+                            <td><?php echo $dato['cantidad'];?></td>
+                            <td style="display: none;"><?php echo $dato['tipoproducto_id'];?></td>
+                            <td><?php echo $dato['nombre_tipo_producto'];?></td>
+                            <td style="display: none;"><?php echo $dato['marca_id'];?></td>
+                            <td style="display: none;"><?php echo $dato['nombre_marca'];?></td>
+                            <td><?php echo $dato['estado'];?></td>
+                        </tr>
+                    <?php }?>
                 </tbody>
         </table>
     </div>
