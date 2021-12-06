@@ -22,12 +22,12 @@
                             </div>
                         </div>
                     </div>
-                    <h1 class="mt-1 mb-3">$47,482</h1>
-                    <div class="mb-0">
+                    <h1 class="mt-1 mb-3">${{ingresos}}</h1>
+                    <!-- <div class="mb-0">
                         <span class="badge badge-success-light"> <i class="mdi mdi-arrow-bottom-right"></i> 3.65%
                         </span>
                         <span class="text-muted">mas con respecto al mes anterior.</span>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -51,12 +51,12 @@
                             </div>
                         </div>
                     </div>
-                    <h1 class="mt-1 mb-3">2,542</h1>
-                    <div class="mb-0">
+                    <h1 class="mt-1 mb-3">{{cantidadVendidadMes}}</h1>
+                    <!-- <div class="mb-0">
                         <span class="badge badge-danger-light"> <i class="mdi mdi-arrow-bottom-right"></i> -5.25%
                         </span>
                         <span class="text-muted">menos al anterior mes.</span>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -78,12 +78,12 @@
                             </div>
                         </div>
                     </div>
-                    <h1 class="mt-1 mb-3">6,300</h1>
-                    <div class="mb-0">
+                    <h1 class="mt-1 mb-3">${{gananciaSemanal}}</h1>
+                    <!-- <div class="mb-0">
                         <span class="badge badge-success-light"> <i class="mdi mdi-arrow-bottom-right"></i> 4.65%
                         </span>
                         <span class="text-muted">mas a la anterior semana</span>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -107,22 +107,22 @@
                             </div>
                         </div>
                     </div>
-                    <h1 class="mt-1 mb-3">$20,120</h1>
-                    <div class="mb-0">
+                    <h1 class="mt-1 mb-3">${{gananciaMensual}}</h1>
+                    <!-- <div class="mb-0">
                         <span class="badge badge-success-light"> <i class="mdi mdi-arrow-bottom-right"></i> 2.35%
                         </span>
                         <span class="text-muted">mas con respecto al mes anterior</span>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-12 col-lg-8 d-flex">
+        <div class="col-12 col-lg-12 d-flex">
             <div class="card flex-fill w-100">
                 <div class="card-header">
                     <div class="float-end">
-                        <form class="row g-2">
+                        <form class="row g-2 d-none">
                             <div class="col-auto">
                                 <select class="form-select form-select-sm bg-light border-0">
                                     <option>Ene</option>
@@ -146,7 +146,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 col-lg-4 d-flex">
+        <div class="col-12 col-lg-4 d-flex d-none">
             <div class="card flex-fill w-100">
                 <div class="card-header">
                     <div class="float-end">
@@ -177,7 +177,106 @@
 <script>
 angular.module("app", []).controller("app-controller", function($scope, $http, $compile) {
 
-    
+    $scope.ingresos = 0;
+    $scope.cantidadVendidadMes = 0;
+    $scope.gananciaSemanal = 0;
+    $scope.gananciaMensual = 0;
+
+    $scope.getIngresos = function() {
+        $http({
+            method: 'GET',
+            url: "<?php echo base_url(); ?>/Reportes/getTotalMes",
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        }).then(function successCallback(response) {
+            $scope.ingresos = response.data;
+            console.log($scope.ingresos);
+        }, function errorCallback(response) {
+            console.log(response);
+        });
+    }
+
+    $scope.getCantidadVendidadMes = function() {
+        $http({
+            method: 'GET',
+            url: "<?php echo base_url(); ?>/Reportes/cantidadVendidadMes",
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        }).then(function successCallback(response) {
+            $scope.cantidadVendidadMes = response.data;
+            console.log($scope.cantidadVendidadMes);
+        }, function errorCallback(response) {
+            console.log(response);
+        });
+    }
+
+    $scope.getGananciaSemanal = function() {
+        $http({
+            method: 'GET',
+            url: "<?php echo base_url(); ?>/Reportes/gananciasSemanal",
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        }).then(function successCallback(response) {
+            $scope.gananciaSemanal = response.data;
+            console.log($scope.gananciaSemanal);
+        }, function errorCallback(response) {
+            console.log(response);
+        });
+    }
+
+    $scope.getGananciaMensual = function() {
+        $http({
+            method: 'GET',
+            url: "<?php echo base_url(); ?>/Reportes/gananciasMensual",
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        }).then(function successCallback(response) {
+            $scope.gananciaMensual = response.data;
+            console.log($scope.gananciaMensual);
+        }, function errorCallback(response) {
+            console.log(response);
+        });
+    }
+
+    $scope.getGananciaMensual();
+    $scope.getGananciaSemanal();
+    $scope.getCantidadVendidadMes();
+    $scope.getIngresos();
+
+    let ingresosMensuales = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+    $scope.getIngresosMensuales = function(mes) {
+        $http({
+            method: 'GET',
+            url: "<?php echo base_url(); ?>/Reportes/IngresoPorMes/" + mes,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        }).then(function successCallback(response) {
+            ingresosMensuales[mes - 1] = response.data;
+            if (mes == 12) {
+                graficar();
+            }
+        }, function errorCallback(response) {
+            console.log(response);
+        });
+    }
+
+     function pasarData() {
+        for (let i = 0; i < ingresosMensuales.length; i++) {
+             $scope.getIngresosMensuales(i + 1);
+        }
+        
+        
+    }
+
+    pasarData();
+
+    function graficar() {
         var ctx = document.getElementById("chartjs-dashboard-line").getContext("2d");
         var gradientLight = ctx.createLinearGradient(0, 0, 0, 225);
         gradientLight.addColorStop(0, "rgba(215, 227, 244, 1)");
@@ -189,30 +288,16 @@ angular.module("app", []).controller("app-controller", function($scope, $http, $
         new Chart(document.getElementById("chartjs-dashboard-line"), {
             type: "line",
             data: {
-                labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct",
+                labels: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct",
                     "Nov",
-                    "Dec"
+                    "Dic"
                 ],
                 datasets: [{
-                    label: "Sales ($)",
+                    label: "Ingresos ($)",
                     fill: true,
-                    backgroundColor: window.theme.id === "light" ? gradientLight :
-                        gradientDark,
+                    backgroundColor: window.theme.id === "light" ? gradientLight : gradientDark,
                     borderColor: window.theme.primary,
-                    data: [
-                        2115,
-                        1562,
-                        1584,
-                        1892,
-                        1587,
-                        1923,
-                        2566,
-                        2448,
-                        2805,
-                        3438,
-                        2917,
-                        3327
-                    ]
+                    data: ingresosMensuales,
                 }]
             },
             options: {
@@ -252,62 +337,68 @@ angular.module("app", []).controller("app-controller", function($scope, $http, $
                 }
             }
         });
-    
+    }
 
-    
-        var markers = [{
-                coords: [37.77, -122.41],
-                name: "San Francisco: 375"
-            },
-            {
-                coords: [40.71, -74.00],
-                name: "New York: 350"
-            },
-            {
-                coords: [39.09, -94.57],
-                name: "Kansas City: 250"
-            },
-            {
-                coords: [36.16, -115.13],
-                name: "Las Vegas: 275"
-            },
-            {
-                coords: [32.77, -96.79],
-                name: "Dallas: 225"
-            }
-        ];
-        var map = new jsVectorMap({
-            map: "us_aea_en",
-            selector: "#usa_map",
-            zoomButtons: true,
-            markers: markers,
-            markerStyle: {
-                initial: {
-                    r: 9,
-                    stroke: window.theme.white,
-                    strokeWidth: 7,
-                    stokeOpacity: .4,
-                    fill: window.theme.primary
-                },
-                hover: {
-                    fill: window.theme.primary,
-                    stroke: window.theme.primary
-                }
-            },
-            regionStyle: {
-                initial: {
-                    fill: window.theme["gray-200"]
-                }
-            },
-            zoomOnScroll: false
-        });
-        window.addEventListener("resize", () => {
-            map.updateSize();
-        });
-        setTimeout(function() {
-            map.updateSize();
-        }, 250);
-    
+
+
+
+
+
+
+
+    // var markers = [{
+    //         coords: [37.77, -122.41],
+    //         name: "San Francisco: 375"
+    //     },
+    //     {
+    //         coords: [40.71, -74.00],
+    //         name: "New York: 350"
+    //     },
+    //     {
+    //         coords: [39.09, -94.57],
+    //         name: "Kansas City: 250"
+    //     },
+    //     {
+    //         coords: [36.16, -115.13],
+    //         name: "Las Vegas: 275"
+    //     },
+    //     {
+    //         coords: [32.77, -96.79],
+    //         name: "Dallas: 225"
+    //     }
+    // ];
+    // var map = new jsVectorMap({
+    //     map: "us_aea_en",
+    //     selector: "#usa_map",
+    //     zoomButtons: true,
+    //     markers: markers,
+    //     markerStyle: {
+    //         initial: {
+    //             r: 9,
+    //             stroke: window.theme.white,
+    //             strokeWidth: 7,
+    //             stokeOpacity: .4,
+    //             fill: window.theme.primary
+    //         },
+    //         hover: {
+    //             fill: window.theme.primary,
+    //             stroke: window.theme.primary
+    //         }
+    //     },
+    //     regionStyle: {
+    //         initial: {
+    //             fill: window.theme["gray-200"]
+    //         }
+    //     },
+    //     zoomOnScroll: false
+    // });
+    // window.addEventListener("resize", () => {
+    //     map.updateSize();
+    // });
+    // setTimeout(function() {
+    //     map.updateSize();
+    // }, 250);
+
 
 });
 </script>
