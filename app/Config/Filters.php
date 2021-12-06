@@ -81,6 +81,8 @@ class Filters extends BaseConfig
 				"tipoUsuario/*",
 				"usuario",
 				"usuario/*",
+				"Reporte",
+				"Reporte/*",
 				
 			],
 		]
