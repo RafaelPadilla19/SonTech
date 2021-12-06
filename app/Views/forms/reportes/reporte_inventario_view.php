@@ -1,6 +1,6 @@
 <?php
     //var_dump($productos);
-
+   
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -12,6 +12,14 @@
     <title>Reporte de inventarios</title>
 </head>
 <body>
+    <style>
+        /** ocultar los botones al imprimir**/
+        @media print {
+            .ocultar * {
+                display: none;
+            }
+        }
+    </style>
     <div class="container pt-5">
         <div class="text-center mb-4">
             <h5>SONTECH</h5>
@@ -54,5 +62,15 @@
                 </tbody>
         </table>
     </div>
+
+    <div class="ocultar d-flex justify-content-center my-3">
+        <button id="imprimir" name="imprimir" class="btn btn-primary me-3">Imprimir</button>
+    </div>
 </body>
 </html>
+<script>
+    //imprimir
+    document.getElementById('imprimir').onclick = function() {
+    window.print();
+    }
+</script>
