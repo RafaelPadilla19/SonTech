@@ -48,7 +48,12 @@ class Reportes extends BaseController{
             ");
 
             $facturas = $query->getRow();
-            echo $facturas->GananciaSemanal;
+            if($facturas->GananciaSemanal == NULL){
+                echo 0;
+            }else{
+                echo $facturas->GananciaSemanal;
+            }
+
         }
 
         public function gananciasMensual(){

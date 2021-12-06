@@ -14,7 +14,7 @@
                     <th>ID</th>
                     <th>Fehca creacion</th>
                     <th>Ultima modificacion</th>
-                    <th>Acciones</th>
+                    <th>Ver Factura</th>
                 </tr>
             </thead>
             <tbody>

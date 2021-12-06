@@ -53,11 +53,13 @@ class FacturaVenta extends BaseController{
 
         public function imprimirFactura($id){
             $detalleFacturaVenta=new DetalleFacturaVenta();
+            $db=db_connect();
             //obtener consulta de la factura
-            $detalles=$detalleFacturaVenta->getFacturaDetalle($id);
+            $detalles=$db->query("SELECT detallefactura_venta.*, productos.precio_unitario,productos.descripcion, productos.nombre_producto from detallefactura_venta, productos WHERE detallefactura_venta.producto_id=productos.producto_id and detallefactura_venta.facturaventa_id=$id
+            ")->getResultArray();
+            $facturaVentaModel=$db->query("SELECT factura_venta.*,usuarios.nombre_usuario, usuarios.apellido_usuario FROM factura_venta, usuarios WHERE factura_venta.usuario_id=usuarios.usuario_id and facturaventa_id=$id")->getRow();
 
 
-            $facturaVentaModel=$this->facturaVentaModel->find($id);
             $data=[
                 'titulo'=>'Factura de Venta',
                 'facturaVentaModel'=>$facturaVentaModel,

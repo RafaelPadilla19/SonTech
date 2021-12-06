@@ -28,7 +28,7 @@
         <table class="table table-sm table-bordered border-primary text-center" style="font-size:12px;">
                 <thead class="table-secondary border-primary">
                     <tr class="align-middle">
-                        <th>ID</th>
+                        <th>Numero</th>
                         <th>Producto</th>
                         <th>Descripcion</th>
                         <th style="display: none;">Costo</th>
@@ -39,13 +39,13 @@
                         <th>Tipo</th>
                         <th style="display: none;">Id marca</th>
                         <th style="display: none;">Marca</th>
-                        <th>Estado</th>
+                        <!-- <th>Estado</th> -->
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach($productos as $dato){?>
+                    <?php foreach($productos as $index=>$dato ){?>
                         <tr>
-                            <td><?php echo $dato['producto_id'];?></td>
+                            <td><?php echo $index+1;?></td>
                             <td><?php echo $dato['nombre_producto'];?></td>
                             <td><?php echo $dato['descripcion'];?></td>
                             <td style="display: none;"><?php echo $dato['costo'];?></td>
@@ -56,7 +56,7 @@
                             <td><?php echo $dato['nombre_tipo_producto'];?></td>
                             <td style="display: none;"><?php echo $dato['marca_id'];?></td>
                             <td style="display: none;"><?php echo $dato['nombre_marca'];?></td>
-                            <td><?php echo $dato['estado'];?></td>
+                            <!-- <td><?php echo $dato['estado'];?></td> -->
                         </tr>
                     <?php }?>
                 </tbody>

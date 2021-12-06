@@ -62,6 +62,12 @@ class Usuario extends BaseController{
             return $query;
         }
 
+        function getUsuariosJson(){
+            $query = $this->usuarioModel->select('usuario_id,nombre_usuario,apellido_usuario');
+            $query = $query->findAll();
+            echo json_encode($query);
+        }
+
         public function insertar(){
             $response=$this->usuarioModel->save([
                 'nombre_usuario' => $this->request->getPost('nombre_usuario'),

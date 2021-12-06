@@ -57,6 +57,11 @@ class Cliente extends BaseController{
             return $query;
         }
 
+        public function getClientoJson(){
+            $query = $this->clienteModel->select('*');
+            $query = $query->findAll();
+            echo json_encode($query);
+        }
         public function insertar(){
             $response=$this->clienteModel->save([
                 'nombre_cliente' => $this->request->getPost('nombre_cliente'),

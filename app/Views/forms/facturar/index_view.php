@@ -8,11 +8,10 @@
                 <div class="row mb-4">
                     <div class="col-6">
                         <label for="recipient-name" class="col-form-label">Cliente:</label>
-                        <input type="text" name="cliente_id" ng-model="factura_venta.cliente_id" class="form-control" list="my-list">
+                        <input type="text"  ng-model="factura_venta.cliente_id" class="form-control" list="my-list">
                         <datalist id="my-list">
-                            <option value="1">juan</option>
-                            <option value="2">pedro</option>
-                            <option value="3">maria</option>
+                        <option ng-repeat="c in clientes track by $index"
+                                            value="{{c.cliente_id}}">{{c.nombre_cliente}}{{" "+c.apellido_cliente}}</option>
                             <!--option coon maria en value pero guarde el id-->
 
                         </datalist>
@@ -21,9 +20,9 @@
                         <label for="recipient-name" class="col-form-label">Usario:</label>
                         <input type="text" ng-model="factura_venta.usuario_id" class="form-control" list="my-lista">
                         <datalist id="my-lista">
-                            <option value="1">user</option>
-                            <option value="2">user</option>
-                            <option value="3">user</option>
+                        <option ng-repeat="c in usuarios track by $index"
+                                            value="{{c.usuario_id}}">{{c.nombre_usuario}}{{" "+c.apellido_usuario}}</option>
+                    
                         </datalist>
                     </div>
 
@@ -168,6 +167,9 @@
 
 <script>
 angular.module("app", []).controller("app-controller", function($scope, $http, $compile) {
+
+    $scope.clientes = [];
+    $scope.usuarios = [];
     $scope.factura_venta = {};
     $scope.productos = [];
     $scope.productosVenta = [];
@@ -177,9 +179,42 @@ angular.module("app", []).controller("app-controller", function($scope, $http, $
     $scope.producto.cantidad = 1;
     $scope.producto.total = 0;
     $scope.producto.precio = 0;
+    $scope.idFactura = 0;
 
 
+    $scope.getClientes = function() {
+        $http({
+            method: 'GET',
+            url: '<?php echo base_url(); ?>/Cliente/getClientoJson',
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        }).then(function successCallback(response) {
+            $scope.clientes = response.data;
+            console.log($scope.clientes);
+        }, function errorCallback(response) {
+            console.log(response);
+        });
+    }
 
+    $scope.getUsuarios = function() {
+        $http({
+            method: 'GET',
+            url: '<?php echo base_url(); ?>/Usuario/getUsuariosJson',
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        }).then(function successCallback(response) {
+            $scope.usuarios = response.data;
+            console.log($scope.usuarios);
+        }, function errorCallback(response) {
+            console.log(response);
+        });
+    }
+
+    $scope.getUsuarios();
+
+    $scope.getClientes();
 
     $scope.getProductos = function() {
         $http({
@@ -284,7 +319,7 @@ angular.module("app", []).controller("app-controller", function($scope, $http, $
                 }
             }).then(function mySuccess(response) {
 
-                console.log(response.data);
+                $scope.idFactura = response.data;
 
                 for(let i=0; i<$scope.detallefactura_ventas.length;i++){
                     $scope.detallefactura_ventas[i].facturaventa_id=response.data;
@@ -298,10 +333,10 @@ angular.module("app", []).controller("app-controller", function($scope, $http, $
                     });
                 }
 
-            }).then(()=>{
+            }).then((res)=>{
                 alert('Factura registrada correctamente');
                 
-                window.open('<?php echo base_url(); ?>/FacturaVenta/imprimirFactura/'+$scope.factura_venta.facturaventa_id);
+                window.open('<?php echo base_url(); ?>/FacturaVenta/imprimirFactura/'+$scope.idFactura,'_blank');
                 location.href="<?php echo base_url(); ?>/FacturaVenta/index";
             });
 

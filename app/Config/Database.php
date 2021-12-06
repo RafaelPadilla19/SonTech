@@ -34,7 +34,7 @@ class Database extends Config
 		'DSN'      => '',
 		'hostname' => 'localhost',
 		'username' => 'root',
-		'password' => '',
+		'password' => 'tryndamere',
 		'database' => 'sontech',
 		'DBDriver' => 'MySQLi',
 		'DBPrefix' => '',

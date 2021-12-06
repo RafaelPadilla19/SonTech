@@ -49,7 +49,7 @@
                     <th style="display: none;">Costo</th>
                     <th>Precio</th>
                     <th style="display: none;">Ganancia</th>
-                    <th>Stock</th>
+                    <th style="display: none;">Stock</th>
                     <th style="display: none;">Id tipo</th>
                     <th>Tipo</th>
                     <th style="display: none;">Id marca</th>
@@ -68,7 +68,7 @@
                     <td style="display: none;"><?php echo $dato['costo'];?></td>
                     <td><?php echo $dato['precio_unitario'];?></td>
                     <td style="display: none;"><?php echo $dato['ganancia'];?></td>
-                    <td><?php echo $dato['cantidad'];?></td>
+                    <td style="display: none;"><?php echo $dato['cantidad'];?></td>
                     <td style="display: none;"><?php echo $dato['tipoproducto_id'];?></td>
                     <td><?php echo $dato['nombre_tipo_producto'];?></td>
                     <td style="display: none;"><?php echo $dato['marca_id'];?></td>
