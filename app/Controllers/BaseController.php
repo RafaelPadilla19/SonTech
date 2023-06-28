@@ -19,6 +19,8 @@ use Psr\Log\LoggerInterface;
  *
  * For security be sure to declare any new methods as protected or private.
  */
+#[\AllowDynamicProperties]
+
 
 class BaseController extends Controller
 {
